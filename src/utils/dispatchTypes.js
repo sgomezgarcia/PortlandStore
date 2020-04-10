@@ -1,0 +1,5 @@
+export const COMMON = {
+  LOADING: 'LOADING',
+  LOADING_END: 'LOADING_END',
+  LOGIN: 'LOGIN'
+};
