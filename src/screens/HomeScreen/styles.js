@@ -1,36 +1,45 @@
 import { StyleSheet } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 import { COLORS } from '../../utils/constants';
-import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
-
 
 const styles = StyleSheet.create({
-  buttonText: {
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-  },  
 
   homeScreenContainer: {
-    display: "flex",
+    display: 'flex',
     flex: 1,
-    flexDirection: "column",
-    
+    flexDirection: 'column', 
   },
 
   image: {
     display: 'flex',
     flex: 1,
+    flexDirection: 'column',
+    paddingTop: RFValue(10),
     resizeMode: 'cover',
-    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+
   },
 
-  homeScreenButton: {
-    backgroundColor: COLORS.white,
-    borderColor: COLORS.white,
-    display: 'flex',
-    flex: 1,
-    justifyContent: 'center',
-       
+  imageText: {
+    color: COLORS.white,
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
+    fontSize: RFValue(50),
   },
+
+  buttonSubtitle: {
+    padding: RFValue(8),
+    borderColor: COLORS.white,
+  },
+
+  textSubtitle: {
+    color: COLORS.white,
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
+    fontSize: RFValue(20),
+  },
+
 
 });
 

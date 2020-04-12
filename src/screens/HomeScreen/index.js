@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, ImageBackground } from 'react-native';
-import { Footer, FooterTab, Button } from 'native-base';
-import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
+import { View, ImageBackground, Text } from 'react-native';
+import { Button } from 'native-base';
 import background from '../../assets/images/portada.jpg';
 
 import styles from './styles';
@@ -9,14 +8,9 @@ import styles from './styles';
 const HomeScreen = ({ navigation }) => (
   <View style={styles.homeScreenContainer}>
     <ImageBackground style={styles.image} source={background}>
-      <Button bordered dark style={styles.homeScreenButton}>
-        <Text style={styles.buttonText}>Woman</Text>
-      </Button>
-      <Button bordered dark style={styles.homeScreenButton}>
-        <Text style={styles.buttonText}>Home</Text>
-      </Button>
-      <Button bordered dark style={styles.homeScreenButton}>
-        <Text style={styles.buttonText}>Man</Text>
+      <Text style={styles.imageText}>new in</Text>
+      <Button transparent bordered dark style={styles.buttonSubtitle}>
+        <Text style={styles.textSubtitle}>view</Text>
       </Button>
     </ImageBackground>
   </View>
