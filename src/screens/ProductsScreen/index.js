@@ -1,13 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import {
-
-} from 'native-base';
-
 import Screen from '../../components/base/screen';
 import styles from './styles';
 
-const ProductsScreen = ({navigation}) => (
+const ProductsScreen = ({ navigation }) => (
   <Screen header footer navigation={navigation}>
     <View style={styles.productContainer}>
       <Text>productoooos</Text>
