@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import 'react-native-gesture-handler';
@@ -11,7 +11,7 @@ import store from './store';
 // Screens
 import LoginScreen from './src/containers/login';
 import HomeScreen from './src/screens/HomeScreen';
-import ProductsScreen from './src/screens/ProductsScreen';
+import ProductsScreen from './src/containers/productsScreen';
 
 const Stack = createStackNavigator();
 
