@@ -11,6 +11,7 @@ import store from './store';
 // Screens
 import LoginScreen from './src/containers/login';
 import HomeScreen from './src/screens/HomeScreen';
+import ProductsScreen from './src/screens/ProductsScreen';
 
 const Stack = createStackNavigator();
 
@@ -19,18 +20,25 @@ const App = () => (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
+          name="Products"
+          component={ProductsScreen}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
           name="Home"
           component={HomeScreen}
           options={{
-          headerShown: false
-        }}
+            headerShown: false
+          }}
         />
         <Stack.Screen
           name="Login"
           component={LoginScreen}
           options={{
-          headerShown: false
-        }}
+            headerShown: false
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

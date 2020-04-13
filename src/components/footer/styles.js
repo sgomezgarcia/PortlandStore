@@ -15,8 +15,8 @@ const styles = StyleSheet.create({
 
     },
 
-    footerIcon: { 
-        fontSize: 20, 
+    footerIcon: {
+        fontSize: 20,
         color: COLORS.black,
     },
 
