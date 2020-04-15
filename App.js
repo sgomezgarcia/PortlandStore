@@ -20,15 +20,15 @@ const App = () => (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Products"
-          component={ProductsScreen}
+          name="Home"
+          component={HomeScreen}
           options={{
             headerShown: false
           }}
         />
         <Stack.Screen
-          name="Home"
-          component={HomeScreen}
+          name="Products"
+          component={ProductsScreen}
           options={{
             headerShown: false
           }}
