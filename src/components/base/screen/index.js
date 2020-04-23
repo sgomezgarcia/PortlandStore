@@ -8,12 +8,13 @@ const Screen = ({
   footer,
   header,
   children,
-  navigation
+  navigation,
+  user
 }) => (
   <View style={style.screen}>
     {header && <Header navigation={navigation} />}
-      {children}
-    {footer && <Footer navigation={navigation} />}
+    { children }
+    {footer && <Footer navigation={navigation} user={user} />}
   </View>
 
   );

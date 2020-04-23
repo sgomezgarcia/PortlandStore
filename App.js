@@ -10,18 +10,26 @@ import store from './store';
 
 // Screens
 import LoginScreen from './src/containers/login';
-import HomeScreen from './src/screens/HomeScreen';
+import HomeScreen from './src/containers/homeScreen';
 import ProductsScreen from './src/containers/productsScreen';
+import UserProfileScreen from './src/containers/userProfile';
 
 const Stack = createStackNavigator();
 
-const App = () => (
+const App = () => {
   <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
           component={HomeScreen}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="UserProfile"
+          component={UserProfileScreen}
           options={{
             headerShown: false
           }}
@@ -43,6 +51,6 @@ const App = () => (
       </Stack.Navigator>
     </NavigationContainer>
   </Provider>
-);
+};
 
 export default App;

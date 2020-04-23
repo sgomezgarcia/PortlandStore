@@ -15,7 +15,7 @@ const LoginScreen = ({ login, navigation }) => {
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged((loggedUser) => {
       if (loggedUser) {
-        navigation.navigate('HomeScreen');
+        navigation.navigate('Home');
       }
     });
 
