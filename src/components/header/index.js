@@ -8,7 +8,7 @@ const Header = ({navigation}) => (
     <Button bordered dark style={styles.homeScreenButton} onPress={() => navigation.navigate('Home')}>
       <Text style={styles.buttonText}>Woman</Text>
     </Button>
-    <Button bordered dark style={styles.homeScreenButton}>
+    <Button bordered dark style={styles.homeScreenButton} onPress={() => navigation.navigate('Home')}>
       <Text style={styles.buttonText}>Home</Text>
     </Button>
     <Button bordered dark style={styles.homeScreenButton}>

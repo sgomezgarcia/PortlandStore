@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import auth from '@react-native-firebase/auth';
+import React, { useState } from 'react';
 
 import { View, Text, StatusBar } from 'react-native';
 import { Button, Item, Input } from 'native-base';
@@ -12,15 +11,10 @@ import Screen from '../../components/base/screen';
 const LoginScreen = ({ login, navigation }) => {
   const [ user, setUser ] = useState();
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged((loggedUser) => {
-      if (loggedUser) {
-        navigation.navigate('Home');
-      }
-    });
-
-    return subscriber; // unsubscribe on unmount
-  }, []);
+  const handleLogin = () => {
+    login(user)
+      .then(navigation.navigate('Home'));
+  };
 
   return (
     <Screen navigation={navigation}>
@@ -49,7 +43,7 @@ const LoginScreen = ({ login, navigation }) => {
         <Button
           disabled={!user?.email || !user?.password}
           style={styles.button}
-          onPress={() => login(user)}
+          onPress={() => handleLogin()}
         >
           <Text style={styles.text}>Login</Text>
         </Button>

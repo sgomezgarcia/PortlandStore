@@ -16,7 +16,7 @@ export const login = (userInfo) => (dispatch) => {
         userInfo.password
       )
         .then(({ user }) => {
-          dispatch({ type: COMMON.LOGIN, user });
+          dispatch({ type: COMMON.LOGIN, user: user._user });
           dispatch(LOADING_END);
           resolve(user);
         })
@@ -27,3 +27,5 @@ export const login = (userInfo) => (dispatch) => {
     }
   });
 };
+
+export const setUser = (user) => (dispatch) => dispatch({ type: COMMON.LOGIN, user });

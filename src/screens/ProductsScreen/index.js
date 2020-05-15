@@ -6,7 +6,7 @@ import styles from './styles';
 import ProductsCard from '../../components/productsCard';
 
 const ProductsScreen = ({
-  navigation, loading, products, getAllProducts
+  navigation, products, getAllProducts
 }) => {
   useEffect(() => {
     getAllProducts();
