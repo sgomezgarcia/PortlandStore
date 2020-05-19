@@ -13,6 +13,8 @@ const general = (state = initialState, action) => {
       return { ...state, loading: false };
     case COMMON.LOGIN:
       return { ...state, user: action.user };
+    case COMMON.LOGOUT:
+      return { ...state, user: null};
     default:
       return { ...state };
   }

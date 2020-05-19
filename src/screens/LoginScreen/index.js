@@ -13,7 +13,10 @@ const LoginScreen = ({ login, navigation }) => {
 
   const handleLogin = () => {
     login(user)
-      .then(navigation.navigate('Home'));
+      .then(() => {
+        navigation.navigate('Home');
+        setUser({});
+      });
   };
 
   return (

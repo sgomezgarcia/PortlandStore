@@ -1,7 +1,8 @@
 export const COMMON = {
   LOADING: 'LOADING',
   LOADING_END: 'LOADING_END',
-  LOGIN: 'LOGIN'
+  LOGIN: 'LOGIN',
+  LOGOUT: 'LOGOUT'
 };
 
 export const PRODUCTS = {

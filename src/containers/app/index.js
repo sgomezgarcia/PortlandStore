@@ -3,14 +3,16 @@ import { bindActionCreators } from 'redux';
 
 import Main from '../../screens/Main';
 
-import { setUser } from '../../actions/users/users';
+import { setUser, autoLogin } from '../../actions/users/users';
 
 const mapStateToProps = ({ general }) => ({
+  loading: general.loading
 });
 
 const mapDispatchToProps = (dispatch) => ({
   ...bindActionCreators({
-    setUser
+    setUser,
+    autoLogin
   }, dispatch)
 });
 
