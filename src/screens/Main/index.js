@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import auth from '@react-native-firebase/auth';
 import Animation from 'lottie-react-native';
 import { View } from 'react-native';
 
@@ -8,7 +7,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 
 import styles from './styles';
-
 
 // Screens
 import LoginScreen from '../../containers/login';
@@ -19,9 +17,9 @@ import LoadingLottie from '../../assets/lotties/loading2.json';
 
 const Stack = createStackNavigator();
 
-const Main = ({ loading, autoLogin }) => {
+const Main = ({ loading, initApp }) => {
   useEffect(() => {
-    autoLogin();
+    initApp();
   }, []);
 
   if (loading) {

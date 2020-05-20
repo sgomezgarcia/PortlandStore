@@ -4,6 +4,9 @@ import { COMMON } from '../../utils/dispatchTypes';
 const LOADING = { type: COMMON.LOADING };
 const LOADING_END = { type: COMMON.LOADING_END };
 
+const LOADING_USER = { type: COMMON.LOADING_USER };
+const LOADING_USER_END= { type: COMMON.LOADING_USER_END };
+
 export const login = (userInfo) => (dispatch) => {
   dispatch(LOADING);
   return new Promise((resolve, reject) => {
@@ -29,7 +32,7 @@ export const login = (userInfo) => (dispatch) => {
 };
 
 export const logout = (userInfo) => (dispatch) => {
-  dispatch(LOADING);
+  dispatch(LOADING_USER);
   return new Promise((resolve, reject) => {
     auth().signOut(
       userInfo.email,
@@ -37,7 +40,7 @@ export const logout = (userInfo) => (dispatch) => {
     )
       .then(() => {
         dispatch({ type: COMMON.LOGOUT, user: null });
-        dispatch(LOADING_END);
+        dispatch(LOADING_USER_END);
         resolve();
       })
       .catch((error) => {

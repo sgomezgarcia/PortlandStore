@@ -1,8 +1,10 @@
-import { COMMON } from '../../utils/dispatchTypes';
+import { COMMON, CATEGORIES } from '../../utils/dispatchTypes';
 
 export const initialState = {
   loading: true,
-  user: null
+  loading_user: false,
+  user: null,
+  categories: []
 };
 
 const general = (state = initialState, action) => {
@@ -13,8 +15,14 @@ const general = (state = initialState, action) => {
       return { ...state, loading: false };
     case COMMON.LOGIN:
       return { ...state, user: action.user };
+    case COMMON.LOADING_USER:
+      return { ...state, loading_user: true };
+    case COMMON.LOADING_USER_END:
+      return { ...state, loading_user: false };
     case COMMON.LOGOUT:
       return { ...state, user: null};
+    case CATEGORIES.GET:
+      return { ...state, categories: action.categories};
     default:
       return { ...state };
   }

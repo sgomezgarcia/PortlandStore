@@ -6,6 +6,9 @@ const styles = StyleSheet.create({
     buttons: {
         backgroundColor: 'transparent',
     },
+    buttons1: {
+        backgroundColor: 'transparent'
+    },
 
     welcomeUser: {
         marginTop: RFValue(30),

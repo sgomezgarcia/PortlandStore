@@ -6,7 +6,7 @@ import UserProfileScreen from '../../screens/UserProfileScreen';
 import {logout} from '../../actions/users/users';
 
 const mapStateToProps = ({ general }) => ({
-    loading: general.loading,
+    loading: general.loading_user,
     user: general.user,
 });
 

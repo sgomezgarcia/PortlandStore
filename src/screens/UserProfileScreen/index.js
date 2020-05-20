@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Icon, Button } from 'native-base';
@@ -6,11 +6,14 @@ import Screen from '../../components/base/screen';
 import styles from './styles';
 
 
-const UserProfileScreen = ({ navigation, user, logout }) => {
+const UserProfileScreen = ({
+  loading, navigation, user, logout
+}) => {
   const handleLogout = () => {
     logout(user)
       .then(navigation.navigate('Login'));
   };
+
   return (
     <Screen header footer user={user} navigation={navigation}>
       <ScrollView>
@@ -38,8 +41,8 @@ const UserProfileScreen = ({ navigation, user, logout }) => {
               </Button>
             </View>
             <View style={styles.userInfo}>
-              <Text style={styles.textInfo}>logout</Text>
               <Button style={styles.buttons}>
+                <Text style={styles.textInfo}>logout</Text>
                 <Icon
                   ios="md-log-out"
                   android="md-log-out"
@@ -47,6 +50,10 @@ const UserProfileScreen = ({ navigation, user, logout }) => {
                   onPress={handleLogout}
                 />
               </Button>
+              {
+                loading &&
+                <Text style={{ color: 'white' }}>cargando</Text>
+              }
             </View>
           </View>
         </View>
