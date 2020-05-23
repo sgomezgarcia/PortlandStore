@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import header from '../../components/footer';
+import header from '../../components/header';
 
 
 const mapStateToProps = ({ general }) => ({
   categories: general.categories,
 });
 
-const mapDispatchToProps = (dispatch) => ({ //acciones
+const mapDispatchToProps = (dispatch) => ({ // acciones
   ...bindActionCreators({
   }, dispatch)
 });

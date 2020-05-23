@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'native-base';
 import style from './style';
 import Footer from '../../../containers/footer';
-import Header from '../../header';
+import Header from '../../../containers/header/header';
 
 const Screen = ({
   footer,

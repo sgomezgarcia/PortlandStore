@@ -5,7 +5,7 @@ export const initialState = {
   products: []
 };
 
-const general = (state = initialState, action) => {
+const products = (state = initialState, action) => {
   switch (action.type) {
     case PRODUCTS.LOADING:
       return { ...state, loading: true };
@@ -18,4 +18,4 @@ const general = (state = initialState, action) => {
   }
 };
 
-export default general;
+export default products;
