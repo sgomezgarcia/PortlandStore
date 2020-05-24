@@ -3,6 +3,7 @@ import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
 import { COLORS } from '../../utils/constants';
 
 const styles = StyleSheet.create({
+
     cardContainer: {
         display: 'flex',
         flexDirection: 'column',
@@ -10,7 +11,8 @@ const styles = StyleSheet.create({
         padding: RFValue(8),
         height: RFValue(400),
         paddingVertical: RFValue(10),
-
+        backgroundColor: 'transparent',
+        elevation: 0
 
     },
 
