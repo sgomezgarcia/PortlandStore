@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
 import { COLORS } from '../../utils/constants';
+import { DimensionPercentage } from '../../utils/helpers';
 
 const styles = StyleSheet.create({
     menu: {
@@ -13,13 +14,32 @@ const styles = StyleSheet.create({
         left: 0,
         paddingTop: RFValue(25),
     },
-    productImage: {
-        width: 100,
-        marginTop: RFValue(20),
-        backgroundColor: 'black',
-     },
 
-     productDescription: {
+    button: {
+        backgroundColor: 'black',
+        margin: RFValue(10),
+        width: DimensionPercentage(40, 'width'),
+        display: 'flex',
+        justifyContent: 'center',
+        elevation: 0,
+        height: DimensionPercentage(5, 'height'),
+        alignSelf: 'center'
+    },
+    textAdd: {
+        fontSize: RFValue(15),
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        display: 'flex',
+        alignItems: 'center',
+        color: COLORS.white
+    },
+
+    productImage: {
+        height: DimensionPercentage(40, 'height'),
+        width: DimensionPercentage(50, 'width'),
+        marginTop: RFValue(20),
+        marginBottom: RFValue(20),
+        backgroundColor: 'black',
         alignSelf: 'center'
      },
 
@@ -27,16 +47,6 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: RFValue(40),
         display: 'flex',
-    },
-
-    edit: {
-        color: 'grey',
-        fontSize: RFValue(20),
-        textTransform: 'uppercase',
-    },
-
-    editText: {
-        fontWeight: 'bold'
     },
 
     productNumber: {
@@ -53,7 +63,7 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
         fontWeight: 'bold',
         margin: RFValue(10),
-        fontSize: RFValue(20),
+        fontSize: RFValue(15),
         textAlign: 'center'
     },
 

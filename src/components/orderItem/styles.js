@@ -31,7 +31,8 @@ size: {
 productContainer: {
     display: 'flex',
     flexDirection: 'row',
-    marginTop: RFValue(30)
+    marginTop: RFValue(10),
+    marginBottom: RFValue(10)
 },
 
 descriptionContainer: {

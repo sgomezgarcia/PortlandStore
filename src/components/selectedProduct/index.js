@@ -24,6 +24,9 @@ const SelectedProduct = ({ product, handleOrderScreen }) => (
         <Text style={styles.shoppingTitle}>{product.name}</Text>
         <Text style={styles.productNumber}>{product.description}</Text>
         <Text style={styles.shoppingTitle}>{`${product.price} EUR`}</Text>
+        <Button style={styles.button} title="hola">
+          <Text style={styles.textAdd}>add</Text>
+        </Button>
       </View>
     </View>
 

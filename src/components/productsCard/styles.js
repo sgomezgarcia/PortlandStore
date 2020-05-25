@@ -1,34 +1,35 @@
-import { StyleSheet, Dimensions } from 'react-native';
-import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
+import { StyleSheet } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 import { COLORS } from '../../utils/constants';
+import { DimensionPercentage } from '../../utils/helpers';
 
 const styles = StyleSheet.create({
 
     cardContainer: {
         display: 'flex',
         flexDirection: 'column',
-        width: RFPercentage(30),
-        padding: RFValue(8),
-        height: RFValue(400),
-        paddingVertical: RFValue(10),
+        width: DimensionPercentage(49, 'width'),
+        height: DimensionPercentage(45, 'height'),
         backgroundColor: 'transparent',
-        elevation: 0
-
+        elevation: 0,
+        marginBottom: RFValue(20)
     },
 
     cardImage: {
         flex: 4,
+        alignSelf: 'center',
+
     },
 
     cardText: {
         display: 'flex',
-        flexDirection: 'column',
         flex: 1,
+        margin: RFValue(8),
     },
 
     image: {
-        flexBasis: Dimensions.get('window').width / 2,
-        height: 290,
+        width: DimensionPercentage(45, 'width'),
+        height: DimensionPercentage(35, 'height'),
     },
 
     text: {

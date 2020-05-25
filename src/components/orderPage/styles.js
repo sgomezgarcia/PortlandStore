@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
+import { RFValue } from 'react-native-responsive-fontsize';
 import { COLORS } from '../../utils/constants';
+import { DimensionPercentage } from '../../utils/helpers';
 
 const styles = StyleSheet.create({
     button: {
@@ -12,7 +13,9 @@ const styles = StyleSheet.create({
         elevation: 0,
         height: RFValue(40)
     },
-
+    scrollview: {
+        marginBottom: DimensionPercentage(19, 'height')
+    },
     textAdd: {
         fontSize: RFValue(20),
         textTransform: 'uppercase',
@@ -26,7 +29,8 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.white,
         position: 'absolute',
         zIndex: 10000,
-        height: RFPercentage(100),
+        height: DimensionPercentage(100, 'height'),
+        width: DimensionPercentage(100, 'width'),
         paddingTop: RFValue(25),
     },
 
@@ -92,9 +96,20 @@ const styles = StyleSheet.create({
 
     buyContainer: {
         position: 'absolute',
-        bottom: 0,
+        bottom: 10,
         alignSelf: 'center',
+        backgroundColor: 'white',
+        width: DimensionPercentage(100, 'width'),
+        padding: RFValue(10),
+        borderTopColor: 'grey',
+        borderTopWidth: 1,
     },
+
+    titleContainer: {
+        padding: RFValue(10),
+        borderBottomColor: 'grey',
+        borderBottomWidth: 1
+    }
 });
 
 export default styles;

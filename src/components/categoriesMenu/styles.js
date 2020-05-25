@@ -1,14 +1,15 @@
 import { StyleSheet } from 'react-native';
-import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
+import { RFValue } from 'react-native-responsive-fontsize';
 import { COLORS } from '../../utils/constants';
+import { DimensionPercentage } from '../../utils/helpers';
 
 const styles = StyleSheet.create({
     menu: {
         backgroundColor: 'black',
         position: 'absolute',
         zIndex: 10000,
-        height: RFPercentage(100),
-        width: RFPercentage(100),
+        height: DimensionPercentage(100, 'height'),
+        width: DimensionPercentage(100, 'width'),
         paddingTop: RFValue(35),
         paddingLeft: RFValue(15)
     },
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
     menuLine2: {
         backgroundColor: 'black',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-end',
     },
 
     button: {

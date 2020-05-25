@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon, Button } from 'native-base';
 import { View, Text } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import OrderItem from '../orderItem';
 import styles from './styles';
 
@@ -22,11 +23,17 @@ const OrderPage = ({ handleOrderScreen }) => (
         />
       </Button>
     </View>
-    <View>
+    <View style={styles.titleContainer}>
       <Text style={styles.shoppingTitle}>shopping bag</Text>
       <Text style={styles.productNumber}>product number</Text>
     </View>
-    <OrderItem />
+    <ScrollView style={styles.scrollview}>
+      <OrderItem />
+      <OrderItem />
+      <OrderItem />
+      <OrderItem />
+
+    </ScrollView>
 
     <View style={styles.buyContainer}>
       <View style={styles.menuLine}>

@@ -1,14 +1,15 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
 import { COLORS } from '../../utils/constants';
+import { DimensionPercentage } from '../../utils/helpers';
 
 const styles = StyleSheet.create({
     menu: {
         backgroundColor: COLORS.white,
         position: 'absolute',
         zIndex: 10000,
-        height: RFPercentage(100),
-        width: RFPercentage(100),
+        height: DimensionPercentage(100, 'height'),
+        width: DimensionPercentage(100, 'width'),
         paddingTop: RFValue(35),
 
     },
@@ -16,18 +17,20 @@ const styles = StyleSheet.create({
     closeIcon: {
         color: 'black',
         fontSize: RFValue(40),
-        display: 'flex',
-        borderWidth: 0
-
+        display: 'flex'
     },
     map: {
         display: 'flex',
         flexWrap: 'wrap',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        elevation: 0
     },
 
     iconButton: {
         backgroundColor: 'white',
+        elevation: 0,
+        alignItems: 'flex-end'
+
     },
 
     menuLine: {
@@ -44,8 +47,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         display: 'flex',
         borderColor: 'grey',
-        borderWidth: 1
+        borderWidth: 1,
+        margin: RFValue(10)
     },
+
     cardContainer: {
         display: 'flex',
         flexDirection: 'column',

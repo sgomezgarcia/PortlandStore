@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
 import { COLORS } from '../../utils/constants';
+import { DimensionPercentage } from '../../utils/helpers';
 
 const styles = StyleSheet.create({
 
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: RFValue(5),
         padding: RFValue(5),
-        width: RFPercentage(20),
+        width: DimensionPercentage(20, 'width'),
 
     },
 
