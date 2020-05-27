@@ -5,14 +5,17 @@ import {
 import styles from './styles';
 import SearchBar from '../searchBar';
 import OrderPage from '../orderPage';
+import FavoriteProduct from '../favoriteProducts';
 
 
 const MyFooter = ({
- navigation, user, getAllProducts, products
+  navigation, user, getAllProducts, products
 }) => {
   const [ searchBarOpen, setSearchBarOpen ] = useState(false);
 
   const [ orderScreenOpen, setOrderScreenOpen ] = useState(false);
+
+  const [ favoriteOpen, setFavoritesOpen ] = useState(false);
 
   const userLink = () => {
     if (user) {
@@ -30,6 +33,10 @@ const MyFooter = ({
     setOrderScreenOpen(!orderScreenOpen);
   };
 
+  const handleFavoriteProduct = () => {
+    setFavoritesOpen(!favoriteOpen);
+  };
+
 
   return (
     <>
@@ -40,7 +47,7 @@ const MyFooter = ({
 
           </Button>
           <Button style={styles.footerButton}>
-            <Icon ios="ios-bookmark" android="ios-bookmark" style={styles.footerIcon} />
+            <Icon ios="ios-bookmark" android="ios-bookmark" style={styles.footerIcon} onPress={() => handleFavoriteProduct()} />
 
           </Button>
           <Button style={styles.footerButton}>
@@ -59,20 +66,30 @@ const MyFooter = ({
       </Footer>
       {
         searchBarOpen && (
-        <SearchBar
-          searchBarOpen={searchBarOpen}
-          handleSearchBar={handleSearchBar}
-          getAllProducts={getAllProducts}
-          products={products}
-        />
-      )}
+          <SearchBar
+            searchBarOpen={searchBarOpen}
+            handleSearchBar={handleSearchBar}
+            getAllProducts={getAllProducts}
+            products={products}
+          />
+        )}
       {
         orderScreenOpen && (
-        <OrderPage
-          orderScreenOpen={orderScreenOpen}
-          handleOrderScreen={handleOrderScreen}
-        />
-      )}
+          <OrderPage
+            orderScreenOpen={orderScreenOpen}
+            handleOrderScreen={handleOrderScreen}
+          />
+        )}
+      {
+        favoriteOpen && (
+          <FavoriteProduct
+            favoriteOpen={favoriteOpen}
+            handleFavoriteProduct={handleFavoriteProduct}
+            getAllProducts={getAllProducts}
+            products={products}
+          />
+        )}
+
     </>
   );
 };

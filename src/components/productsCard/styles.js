@@ -4,6 +4,19 @@ import { COLORS } from '../../utils/constants';
 import { DimensionPercentage } from '../../utils/helpers';
 
 const styles = StyleSheet.create({
+    button2: {
+        backgroundColor: 'transparent',
+        elevation: 0,
+        alignSelf: 'flex-end',
+        position: 'absolute',
+        top: -55,
+        right: 0
+    },
+
+    bookmark: {
+        color: COLORS.black,
+
+    },
 
     cardContainer: {
         display: 'flex',
@@ -12,7 +25,8 @@ const styles = StyleSheet.create({
         height: DimensionPercentage(45, 'height'),
         backgroundColor: 'transparent',
         elevation: 0,
-        marginBottom: RFValue(20)
+        marginBottom: RFValue(20),
+        position: 'relative'
     },
 
     cardImage: {

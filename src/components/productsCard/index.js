@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, ImageBackground } from 'react-native';
-import { Button } from 'native-base';
+import { Button, Icon } from 'native-base';
 import styles from './styles';
 import SelectedProduct from '../selectedProduct';
 
@@ -25,6 +25,9 @@ const ProductsCard = ({ product }) => {
           <View style={styles.cardText}>
             <Text style={styles.text}>{product.name}</Text>
             <Text style={styles.price}>{`${product.price} EUR`}</Text>
+            <Button style={styles.button2} title="hola">
+              <Icon ios="ios-heart-empty" android="ios-heart-empty" style={styles.bookmark} onPress={() => handleFavoriteProduct()} />
+            </Button>
           </View>
         </View>
       </Button>

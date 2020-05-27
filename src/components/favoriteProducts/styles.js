@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize';
+import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
 import { COLORS } from '../../utils/constants';
 import { DimensionPercentage } from '../../utils/helpers';
 
@@ -25,18 +25,6 @@ const styles = StyleSheet.create({
         height: DimensionPercentage(5, 'height'),
         alignSelf: 'center'
     },
-
-    button2: {
-        alignSelf: 'center',
-        backgroundColor: 'transparent',
-        elevation: 0
-
-    },
-
-    bookmark: {
-        color: COLORS.black,
-    },
-
     textAdd: {
         fontSize: RFValue(15),
         textTransform: 'uppercase',
@@ -53,7 +41,7 @@ const styles = StyleSheet.create({
         marginBottom: RFValue(20),
         backgroundColor: 'black',
         alignSelf: 'center'
-    },
+     },
 
     closeIcon: {
         color: 'black',
@@ -94,21 +82,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between'
-
+        marginLeft: RFValue(350)
     },
-
-    sizeButton: {
-        backgroundColor: COLORS.white,
-        elevation: 0,
-        alignSelf: 'center'
-
-    },
-
-    sizeText: {
-        fontSize: RFValue(15),
-        fontWeight: 'bold',
-    }
 });
 
 export default styles;
