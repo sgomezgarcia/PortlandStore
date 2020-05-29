@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { View, Image } from 'react-native';
+import { View, ImageBackground, Text } from 'react-native';
 import { Button, Icon } from 'native-base';
-
+import { ScrollView } from 'react-native-gesture-handler';
 import styles from './styles';
 
 const FavoriteProduct = ({
-  handleFavoriteProduct, getAllProducts, product
+  handleFavoriteProduct, getAllProducts, products
 }) => {
   useEffect(() => {
     getAllProducts();
@@ -22,13 +22,20 @@ const FavoriteProduct = ({
           />
         </Button>
       </View>
-      <View style={styles.productDescription}>
-        <Image
-          source={{ uri: 'https://www.theblocklearning.com/wp-content/uploads/2018/09/512px-React-icon.svg.png' }}
-          style={styles.productImage}
-        />
+      <View style={styles.titleContainer}>
+        <Text style={styles.shoppingTitle}>my list</Text>
       </View>
-
+      <ScrollView style={styles.scroll}>
+        <View style={styles.productContainer}>
+          {
+            products && products.map((product, key) => (
+              <View key={key} product={product} style={styles.card}>
+                <ImageBackground source={{ uri: product.cover }} style={styles.image} />
+              </View>
+))
+          }
+        </View>
+      </ScrollView>
     </View>
   );
 };

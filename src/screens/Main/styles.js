@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
-import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
+import { DimensionPercentage } from '../../utils/helpers';
 
 
 const styles = StyleSheet.create({
    lottie: {
-       height: RFPercentage(100),
+       height: DimensionPercentage(100, 'height'),
        backgroundColor: 'black',
    }
 });

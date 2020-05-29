@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Icon, Button } from 'native-base';
 import { View, Text } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import OrderItem from '../orderItem';
 import styles from './styles';
 import ShoppingBag from '../shoppingBag';
 import OrderPayment from '../orderPayment';
@@ -43,25 +41,56 @@ const OrderPage = ({ handleOrderScreen }) => {
     return null;
   };
 
+  const renderEditButton = () => {
+    if (mode === MODES.list) {
+      return (
+        <View style={styles.menuLine2}>
+          <Button style={styles.iconButton2} onPress={handleOrderScreen} title="hola">
+            <Icon
+              style={styles.edit}
+            >
+              <Text style={styles.editText}>edit</Text>
+            </Icon>
+          </Button>
+          <Button style={styles.iconButton} onPress={handleOrderScreen} title="hola">
+            <Icon
+              ios="ios-close"
+              android="ios-close"
+              style={styles.closeIcon}
+            />
+          </Button>
+        </View>
+      );
+    } if (mode === MODES.card) {
+      return (
+        <View style={styles.menuLine2}>
+          <Button style={styles.iconButton} onPress={handleOrderScreen} title="hola">
+            <Icon
+              ios="ios-close"
+              android="ios-close"
+              style={styles.closeIcon}
+            />
+          </Button>
+        </View>
+      );
+    }
+      return (
+        <View style={styles.menuLine2}>
+          <Button style={styles.iconButton} onPress={handleOrderScreen} title="hola">
+            <Icon
+              ios="ios-checkmark"
+              android="ios-checkmark"
+              style={styles.closeIcon}
+            />
+          </Button>
+        </View>
+      );
+  };
+
   return (
 
     <View style={styles.menu}>
-      <View style={styles.menuLine2}>
-        <Button style={styles.iconButton2} onPress={handleOrderScreen} title="hola">
-          <Icon
-            style={styles.edit}
-          >
-            <Text style={styles.editText}>edit</Text>
-          </Icon>
-        </Button>
-        <Button style={styles.iconButton} onPress={handleOrderScreen} title="hola">
-          <Icon
-            ios="ios-close"
-            android="ios-close"
-            style={styles.closeIcon}
-          />
-        </Button>
-      </View>
+      { renderEditButton()}
       {
         mode === MODES.list && <ShoppingBag />
       }

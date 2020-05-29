@@ -91,7 +91,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         display: 'flex',
         flexDirection: 'row',
-        marginLeft: RFValue(300)
+        alignSelf: 'flex-end',
+        marginRight: RFValue(10)
     },
 
     buyContainer: {

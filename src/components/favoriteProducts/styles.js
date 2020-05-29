@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
+import { RFValue } from 'react-native-responsive-fontsize';
 import { COLORS } from '../../utils/constants';
 import { DimensionPercentage } from '../../utils/helpers';
 
@@ -12,36 +12,10 @@ const styles = StyleSheet.create({
         bottom: 0,
         right: 0,
         left: 0,
-        paddingTop: RFValue(25),
-    },
-
-    button: {
-        backgroundColor: 'black',
-        margin: RFValue(10),
-        width: DimensionPercentage(40, 'width'),
-        display: 'flex',
-        justifyContent: 'center',
-        elevation: 0,
-        height: DimensionPercentage(5, 'height'),
+        paddingTop: RFValue(10),
         alignSelf: 'center'
-    },
-    textAdd: {
-        fontSize: RFValue(15),
-        textTransform: 'uppercase',
-        fontWeight: 'bold',
-        display: 'flex',
-        alignItems: 'center',
-        color: COLORS.white
-    },
 
-    productImage: {
-        height: DimensionPercentage(40, 'height'),
-        width: DimensionPercentage(50, 'width'),
-        marginTop: RFValue(20),
-        marginBottom: RFValue(20),
-        backgroundColor: 'black',
-        alignSelf: 'center'
-     },
+    },
 
     closeIcon: {
         color: 'black',
@@ -49,41 +23,44 @@ const styles = StyleSheet.create({
         display: 'flex',
     },
 
-    productNumber: {
-        textTransform: 'uppercase',
-        fontWeight: 'bold',
-        marginLeft: RFValue(10),
-        fontSize: RFValue(15),
-        color: 'grey',
-        textAlign: 'center'
-
+    card: {
+        display: 'flex',
+        backgroundColor: 'transparent',
+        elevation: 0,
     },
 
-    shoppingTitle: {
-        textTransform: 'uppercase',
-        fontWeight: 'bold',
-        margin: RFValue(10),
-        fontSize: RFValue(15),
-        textAlign: 'center'
-    },
 
     iconButton: {
         backgroundColor: 'white',
         elevation: 0
     },
 
-    menuLine: {
-        alignItems: 'center',
-        display: 'flex',
-        justifyContent: 'center',
+    image: {
+        height: DimensionPercentage(28, 'height'),
+        width: DimensionPercentage(32, 'width'),
+        margin: RFValue(1),
     },
 
     menuLine2: {
         backgroundColor: 'white',
         display: 'flex',
-        flexDirection: 'row',
-        marginLeft: RFValue(350)
+        alignSelf: 'flex-end'
     },
+    productContainer: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+
+    shoppingTitle: {
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        marginBottom: RFValue(20),
+        marginLeft: RFValue(10),
+        fontSize: RFValue(20)
+    },
+
 });
 
 export default styles;
