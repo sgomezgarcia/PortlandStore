@@ -1,4 +1,6 @@
 import auth from '@react-native-firebase/auth';
+import functions from '@react-native-firebase/functions';
+
 import { COMMON } from '../../utils/dispatchTypes';
 
 const LOADING = { type: COMMON.LOADING };
@@ -53,7 +55,7 @@ export const logout = (userInfo) => (dispatch) => {
 export const setUser = (user) => (dispatch) => dispatch({ type: COMMON.LOGIN, user });
 
 export const autoLogin = () => (dispatch) => {
-  dispatch(LOADING_END);
+  dispatch(LOADING);
   return new Promise((resolve, reject) => {
     auth().onAuthStateChanged((loggedUser) => {
       if (loggedUser) {
@@ -62,5 +64,20 @@ export const autoLogin = () => (dispatch) => {
       dispatch(LOADING_END);
       resolve();
   });
+  });
+};
+
+export const getOrdersByUser = () => () => {
+  const useFunction = functions().httpsCallable('getProductsByUserId');
+  return new Promise((resolve, reject) => {
+    useFunction({ userId: 'jhgjh' })
+      .then((res) => {
+        resolve(res);
+        console.warn(1);
+      })
+      .catch((err) => {
+        reject(err);
+        console.warn(1);
+      });
   });
 };

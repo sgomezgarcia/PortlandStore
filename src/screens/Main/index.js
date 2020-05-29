@@ -17,9 +17,10 @@ import LoadingLottie from '../../assets/lotties/loading2.json';
 
 const Stack = createStackNavigator();
 
-const Main = ({ loading, initApp }) => {
+const Main = ({ loading, initApp, getOrdersByUser }) => {
   useEffect(() => {
     initApp();
+    getOrdersByUser();
   }, []);
 
   if (loading) {

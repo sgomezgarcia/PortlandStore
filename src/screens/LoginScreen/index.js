@@ -10,7 +10,7 @@ const MODES = {
   signUp: 'signUp',
 };
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({navigation, login}) => {
   const [ mode, setMode ] = useState(MODES.login);
 
   const renderScreens = () => {
@@ -20,7 +20,7 @@ const LoginScreen = ({navigation}) => {
       );
     }
     return (
-      <Login handleSignUp={() => setMode(MODES.signUp)} navigation={navigation} />
+      <Login handleSignUp={() => setMode(MODES.signUp)} navigation={navigation} login={login} />
     );
   };
 
