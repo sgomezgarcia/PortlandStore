@@ -17,7 +17,10 @@ const Login = ({ login, navigation, handleSignUp }) => {
     login(user)
       .then(() => {
         navigation.navigate('Home');
-        setUser({});
+        setUser(user);
+      })
+      .catch(() => {
+        console.warn('errooooorrrr');
       });
   };
 
@@ -58,7 +61,7 @@ const Login = ({ login, navigation, handleSignUp }) => {
           <Button
             disabled={!user?.email || !user?.password}
             style={styles.button}
-            onPress={() => handleLogin()}
+            onPress={handleLogin}
           >
             <Text style={styles.text}>Login</Text>
           </Button>

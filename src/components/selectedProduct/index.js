@@ -40,7 +40,7 @@ const SelectedProduct = ({ product, handleOrderScreen, handleFavoriteProduct }) 
           <Button style={styles.button} title="hola" onPress={ShowHideSizes}>
             <Text style={styles.textAdd}>add</Text>
           </Button>
-          <View>
+          <View style={styles.sizes}>
             {
               product && product.sizes && product.sizes.map((item, key) => <Button key={key} title="" style={styles.sizeButton}><Text style={styles.sizeText}>{item}</Text></Button>)
             }

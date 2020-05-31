@@ -1,10 +1,11 @@
-import { COMMON, CATEGORIES } from '../../utils/dispatchTypes';
+import { COMMON, CATEGORIES, ORDERS } from '../../utils/dispatchTypes';
 
 export const initialState = {
   loading: true,
   loading_user: false,
   user: null,
-  categories: []
+  categories: [],
+  orders: []
 };
 
 const general = (state = initialState, action) => {
@@ -23,6 +24,8 @@ const general = (state = initialState, action) => {
       return { ...state, user: null};
     case CATEGORIES.GET:
       return { ...state, categories: action.categories};
+    case ORDERS.GET:
+      return { ...state, orders: action.orders};
     default:
       return { ...state };
   }

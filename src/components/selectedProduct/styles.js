@@ -102,12 +102,19 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.white,
         elevation: 0,
         alignSelf: 'center'
-
     },
 
     sizeText: {
         fontSize: RFValue(15),
         fontWeight: 'bold',
+    },
+
+    sizes: {
+        position: 'absolute',
+        bottom: 0,
+        maxHeight: 0,
+        backgroundColor: 'blue',
+        overflow: 'hidden'
     }
 });
 

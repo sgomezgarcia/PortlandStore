@@ -19,8 +19,10 @@ const Stack = createStackNavigator();
 
 const Main = ({ loading, initApp, getOrdersByUser }) => {
   useEffect(() => {
-    initApp();
-    getOrdersByUser();
+    initApp()
+    .then(() => {
+      getOrdersByUser();
+    });
   }, []);
 
   if (loading) {

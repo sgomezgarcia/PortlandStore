@@ -16,3 +16,7 @@ export const PRODUCTS = {
 export const CATEGORIES = {
   GET: 'CATEGORIES_GET'
 };
+
+export const ORDERS = {
+  GET: 'ORDERS_GET'
+};

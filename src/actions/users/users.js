@@ -67,17 +67,16 @@ export const autoLogin = () => (dispatch) => {
   });
 };
 
-export const getOrdersByUser = () => () => {
+export const getOrdersByUser = () => (dispatch, getState) => {
   const useFunction = functions().httpsCallable('getProductsByUserId');
+  const {user} = getState().general;
   return new Promise((resolve, reject) => {
-    useFunction({ userId: 'jhgjh' })
+    useFunction({ userId: user.uid })
       .then((res) => {
         resolve(res);
-        console.warn(1);
       })
       .catch((err) => {
         reject(err);
-        console.warn(1);
       });
   });
 };
