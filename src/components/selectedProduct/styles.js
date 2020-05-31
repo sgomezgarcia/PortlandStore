@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
         right: 0,
         left: 0,
         paddingTop: RFValue(25),
+        height: DimensionPercentage(100, 'height'),
     },
 
     button: {

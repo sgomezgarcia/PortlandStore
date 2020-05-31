@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
+import { RFValue } from 'react-native-responsive-fontsize';
 import { COLORS } from '../../utils/constants';
+import { DimensionPercentage } from '../../utils/helpers';
 
 const styles = StyleSheet.create({
 
@@ -10,6 +11,7 @@ description: {
     margin: RFValue(10),
     fontSize: RFValue(15),
     marginTop: RFValue(15),
+    maxWidth: DimensionPercentage(70, 'width')
 
 },
 
@@ -42,7 +44,7 @@ descriptionContainer: {
 
 
 productImage: {
-    width: 150,
+    width: 100,
     height: 150,
     marginLeft: RFValue(10),
     marginTop: RFValue(20),

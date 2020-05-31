@@ -12,8 +12,15 @@ const MODES = {
   success: 'success'
 };
 
-const OrderPage = ({ handleOrderScreen }) => {
+const OrderPage = ({ handleOrderScreen, userCart }) => {
   const [ mode, setMode ] = useState(MODES.list);
+  const getTotal = () => {
+    let total = 0;
+    for (let i = 0; i < userCart.length; i++) {
+      total = total + userCart[i].price;
+    }
+    return total;
+  };
 
   const renderButton = () => {
     const buttonType = {};
@@ -30,7 +37,7 @@ const OrderPage = ({ handleOrderScreen }) => {
       return (
         <View style={styles.buyContainer}>
           <View style={styles.menuLine}>
-            <Text style={styles.textTotal}>total 39,95 EUR</Text>
+            <Text style={styles.textTotal}>{`TOTAL ${getTotal()} EUR`}</Text>
             <Button style={styles.button} onPress={buttonType.action} title="hola">
               <Text style={styles.textAdd}>{buttonType.text}</Text>
             </Button>
@@ -92,7 +99,7 @@ const OrderPage = ({ handleOrderScreen }) => {
     <View style={styles.menu}>
       { renderEditButton()}
       {
-        mode === MODES.list && <ShoppingBag />
+        mode === MODES.list && <ShoppingBag userCart={userCart} />
       }
       {
         mode === MODES.card && <OrderPayment />

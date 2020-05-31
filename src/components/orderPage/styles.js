@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
 
     textTotal: {
         textTransform: 'uppercase',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: RFValue(15)
     },
 
     productNumber: {

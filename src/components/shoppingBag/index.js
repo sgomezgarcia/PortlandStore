@@ -1,23 +1,23 @@
 import React from 'react';
-import { Button } from 'native-base';
 import { View, Text } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import OrderItem from '../orderItem';
 import styles from './styles';
 
-const ShoppingBag = () => (
+const ShoppingBag = ({userCart}) => (
 
   <View>
     <View style={styles.titleContainer}>
       <Text style={styles.shoppingTitle}>shopping bag</Text>
-      <Text style={styles.productNumber}>product number</Text>
+      <Text style={styles.productNumber}>{`${userCart.length} ${1 === userCart.length ? 'product' : 'products'}`}</Text>
     </View>
     <ScrollView style={styles.scrollview}>
-      <OrderItem />
-      <OrderItem />
-      <OrderItem />
-      <OrderItem />
+      {
+        userCart && 0 < userCart.length && userCart.map((item, key) => (
+          <OrderItem key={key} item={item} />
+        ))
 
+      }
     </ScrollView>
   </View>
 

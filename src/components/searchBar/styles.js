@@ -29,8 +29,6 @@ const styles = StyleSheet.create({
     iconButton: {
         backgroundColor: 'white',
         elevation: 0,
-        alignItems: 'flex-end'
-
     },
 
     menuLine: {
@@ -40,7 +38,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         display: 'flex',
         flexDirection: 'column',
-        marginLeft: RFValue(350)
+        alignItems: 'flex-end'
     },
 
     input: {

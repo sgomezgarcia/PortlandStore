@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, Image } from 'react-native';
 import { Button, Icon } from 'native-base';
+import Toast from 'react-native-simple-toast';
+
 
 import styles from './styles';
 
-const SelectedProduct = ({ addToCart, product, handleOrderScreen, handleFavoriteProduct }) => {
+const SelectedProduct = ({
+ addToCart, product, handleOrderScreen, handleFavoriteProduct
+}) => {
   const [ showSizes, setShowSizes ] = useState(false);
   const ShowHideSizes = () => {
     if (true === showSizes) {
@@ -49,7 +53,11 @@ const SelectedProduct = ({ addToCart, product, handleOrderScreen, handleFavorite
                   style={styles.sizeButton}
                   onPress={() => {
                     const productWithSize = { ...product, size: item };
-                    addToCart(productWithSize);
+                    addToCart(productWithSize)
+                    .then(() => {
+                      Toast.show('Added to cart', Toast.LONG);
+                      setShowSizes(false);
+                    });
                   }}
                 >
                   <Text style={styles.sizeText}>{item}</Text>

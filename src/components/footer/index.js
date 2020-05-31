@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Text } from 'react-native';
 import {
   Footer, FooterTab, Button, Icon
 } from 'native-base';
@@ -9,7 +10,7 @@ import FavoriteProduct from '../favoriteProducts';
 
 
 const MyFooter = ({
-  navigation, user, getAllProducts, products
+  navigation, user, getAllProducts, products, userCart
 }) => {
   const [ searchBarOpen, setSearchBarOpen ] = useState(false);
 
@@ -59,8 +60,8 @@ const MyFooter = ({
 
           </Button>
           <Button style={styles.footerButton}>
+            <Text style={styles.cartNumber}>{userCart.length}</Text>
             <Icon ios="ios-cart" android="ios-cart" style={styles.footerIcon} onPress={handleOrderScreen} />
-
           </Button>
         </FooterTab>
       </Footer>
@@ -78,6 +79,7 @@ const MyFooter = ({
           <OrderPage
             orderScreenOpen={orderScreenOpen}
             handleOrderScreen={handleOrderScreen}
+            userCart={userCart}
           />
         )}
       {

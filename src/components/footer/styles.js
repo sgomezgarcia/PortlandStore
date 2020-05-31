@@ -24,6 +24,10 @@ const styles = StyleSheet.create({
     footer: {
         backgroundColor: 'white',
     },
+    cartNumber: {
+        marginRight: RFValue(-8),
+        fontSize: RFValue(13)
+    }
 });
 
 export default styles;

@@ -7,10 +7,11 @@ import { getAllProducts } from '../../actions/products/products';
 
 const mapStateToProps = ({ general, product }) => ({
   user: general.user,
-  products: product.products
+  products: product.products,
+  userCart: general.userCart
 });
 
-const mapDispatchToProps = (dispatch) => ({ //acciones
+const mapDispatchToProps = (dispatch) => ({ // acciones
   ...bindActionCreators({
     getAllProducts
   }, dispatch)
