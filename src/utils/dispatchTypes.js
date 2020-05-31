@@ -10,7 +10,7 @@ export const COMMON = {
 export const PRODUCTS = {
   LOADING: 'PRODUCTS_LOADING',
   LOADING_END: 'PRODUCTS_LOADING_END',
-  GET: 'PRODUCTS_GET'
+  GET: 'PRODUCTS_GET',
 };
 
 export const CATEGORIES = {
@@ -18,5 +18,6 @@ export const CATEGORIES = {
 };
 
 export const ORDERS = {
+  ADD_CART: 'ORDERS_ADD_CART',
   GET: 'ORDERS_GET'
 };

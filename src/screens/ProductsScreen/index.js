@@ -6,7 +6,7 @@ import styles from './styles';
 import ProductsCard from '../../components/productsCard';
 
 const ProductsScreen = ({
-  navigation, products, getAllProducts
+  navigation, products, getAllProducts, addToCart
 }) => {
   useEffect(() => {
     getAllProducts();
@@ -17,7 +17,13 @@ const ProductsScreen = ({
       <ScrollView>
         <View style={styles.productContainer}>
           {
-            products && products.map((product, key) => <ProductsCard key={key} product={product} />)
+            products && products.map((product, key) => (
+              <ProductsCard
+                addToCart={addToCart}
+                key={key}
+                product={product}
+              />
+            ))
           }
         </View>
       </ScrollView>

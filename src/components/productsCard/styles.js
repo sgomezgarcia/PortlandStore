@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
         elevation: 0,
         alignSelf: 'flex-end',
         position: 'absolute',
-        top: -55,
-        right: 0
+        top: 12,
+        right: -9
     },
 
     bookmark: {

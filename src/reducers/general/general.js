@@ -5,7 +5,8 @@ export const initialState = {
   loading_user: false,
   user: null,
   categories: [],
-  orders: []
+  orders: [],
+  userCart: []
 };
 
 const general = (state = initialState, action) => {
@@ -26,6 +27,8 @@ const general = (state = initialState, action) => {
       return { ...state, categories: action.categories};
     case ORDERS.GET:
       return { ...state, orders: action.orders};
+    case ORDERS.ADD_CART:
+      return { ...state, userCart: [ ...state.userCart, action.product ]};
     default:
       return { ...state };
   }

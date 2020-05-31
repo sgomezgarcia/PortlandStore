@@ -5,7 +5,7 @@ import styles from './styles';
 import SelectedProduct from '../selectedProduct';
 
 
-const ProductsCard = ({ product }) => {
+const ProductsCard = ({ addToCart, product }) => {
   const [ showProduct, setShowProduct ] = useState(false);
 
   const selectProduct = () => {
@@ -34,6 +34,7 @@ const ProductsCard = ({ product }) => {
       {
         showProduct && (
         <SelectedProduct
+          addToCart={addToCart}
           selectProduct={selectProduct}
           product={product}
           handleOrderScreen={handleOrderScreen}

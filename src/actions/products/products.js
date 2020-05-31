@@ -1,5 +1,5 @@
 import functions from '@react-native-firebase/functions';
-import { PRODUCTS } from '../../utils/dispatchTypes';
+import { PRODUCTS, ORDERS } from '../../utils/dispatchTypes';
 
 const LOADING = { type: PRODUCTS.LOADING };
 const LOADING_END = { type: PRODUCTS.LOADING_END };
@@ -19,3 +19,8 @@ export const getAllProducts = () => (dispatch) => {
             });
     });
 };
+
+export const addToCart = (product) => (dispatch) => new Promise((resolve, reject) => {
+    dispatch({ type: ORDERS.ADD_CART, product });
+    resolve();
+});

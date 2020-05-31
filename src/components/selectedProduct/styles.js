@@ -109,12 +109,21 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 
-    sizes: {
+
+    sizesHidden: {
         position: 'absolute',
         bottom: 0,
         maxHeight: 0,
         backgroundColor: 'blue',
-        overflow: 'hidden'
+        overflow: 'hidden',
+
+    },
+    sizesShown: {
+        position: 'absolute',
+        bottom: 0,
+        backgroundColor: COLORS.white,
+        maxHeight: DimensionPercentage(50, 'height'),
+        width: DimensionPercentage(100, 'width'),
     }
 });
 
