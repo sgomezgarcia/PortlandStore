@@ -51,6 +51,13 @@ productImage: {
     backgroundColor: 'black'
  },
 
+ iconButton: {
+     backgroundColor: COLORS.white,
+     elevation: 0
+ },
+ trashIcon: {
+    color: COLORS.black
+ }
 });
 
 export default styles;

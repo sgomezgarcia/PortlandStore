@@ -14,6 +14,11 @@ const MODES = {
 
 const OrderPage = ({ handleOrderScreen, userCart }) => {
   const [ mode, setMode ] = useState(MODES.list);
+  const [ showTrash, setShowTrash ] = useState(false);
+  const editButton = () => {
+    setShowTrash(!showTrash);
+  };
+
   const getTotal = () => {
     let total = 0;
     for (let i = 0; i < userCart.length; i++) {
@@ -21,6 +26,7 @@ const OrderPage = ({ handleOrderScreen, userCart }) => {
     }
     return total;
   };
+
 
   const renderButton = () => {
     const buttonType = {};
@@ -52,11 +58,11 @@ const OrderPage = ({ handleOrderScreen, userCart }) => {
     if (mode === MODES.list) {
       return (
         <View style={styles.menuLine2}>
-          <Button style={styles.iconButton2} onPress={handleOrderScreen} title="hola">
+          <Button style={styles.iconButton2} onPress={editButton} title="">
             <Icon
               style={styles.edit}
             >
-              <Text style={styles.editText}>edit</Text>
+              <Text style={styles.editText}>{showTrash ? 'cancel' : 'edit'}</Text>
             </Icon>
           </Button>
           <Button style={styles.iconButton} onPress={handleOrderScreen} title="hola">
@@ -99,7 +105,7 @@ const OrderPage = ({ handleOrderScreen, userCart }) => {
     <View style={styles.menu}>
       { renderEditButton()}
       {
-        mode === MODES.list && <ShoppingBag userCart={userCart} />
+        mode === MODES.list && <ShoppingBag userCart={userCart} showTrash={showTrash} />
       }
       {
         mode === MODES.card && <OrderPayment />
