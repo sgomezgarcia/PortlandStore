@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import OrderItem from '../orderItem';
 import styles from './styles';
 
-const ShoppingBag = ({userCart, showTrash}) => (
+const ShoppingBag = ({userCart, showTrash, setCart}) => (
 
   <View>
     <View style={styles.titleContainer}>
@@ -14,7 +14,7 @@ const ShoppingBag = ({userCart, showTrash}) => (
     <ScrollView style={styles.scrollview}>
       {
         userCart && 0 < userCart.length && userCart.map((item, key) => (
-          <OrderItem key={key} item={item} showTrash={showTrash} />
+          <OrderItem key={key} index={key} item={item} showTrash={showTrash} setCart={setCart} userCart={userCart} />
         ))
 
       }

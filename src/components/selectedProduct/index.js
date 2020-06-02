@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { View, Text, Image } from 'react-native';
 import { Button, Icon } from 'native-base';
 import Toast from 'react-native-simple-toast';
-
-
 import styles from './styles';
 
 const SelectedProduct = ({

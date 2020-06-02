@@ -12,7 +12,7 @@ const MODES = {
   success: 'success'
 };
 
-const OrderPage = ({ handleOrderScreen, userCart }) => {
+const OrderPage = ({ handleOrderScreen, userCart, setCart }) => {
   const [ mode, setMode ] = useState(MODES.list);
   const [ showTrash, setShowTrash ] = useState(false);
   const editButton = () => {

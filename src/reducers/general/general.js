@@ -29,6 +29,8 @@ const general = (state = initialState, action) => {
       return { ...state, orders: action.orders};
     case ORDERS.ADD_CART:
       return { ...state, userCart: [ ...state.userCart, action.product ]};
+    case ORDERS.SET_CART:
+      return { ...state, userCart: action.cart };
     default:
       return { ...state };
   }

@@ -34,17 +34,19 @@ productContainer: {
     display: 'flex',
     flexDirection: 'row',
     marginTop: RFValue(10),
-    marginBottom: RFValue(10)
+    marginBottom: RFValue(10),
+    width: DimensionPercentage(100, 'width'),
 },
 
 descriptionContainer: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    position: 'relative',
+    width: DimensionPercentage(75, 'width'),
 },
 
-
 productImage: {
-    width: 100,
+    width: DimensionPercentage(25, 'width'),
     height: 150,
     marginLeft: RFValue(10),
     marginTop: RFValue(20),
@@ -53,7 +55,10 @@ productImage: {
 
  iconButton: {
      backgroundColor: COLORS.white,
-     elevation: 0
+     elevation: 0,
+     position: 'absolute',
+     right: 20,
+     top: '45%',
  },
  trashIcon: {
     color: COLORS.black

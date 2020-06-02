@@ -19,5 +19,6 @@ export const CATEGORIES = {
 
 export const ORDERS = {
   ADD_CART: 'ORDERS_ADD_CART',
-  GET: 'ORDERS_GET'
+  GET: 'ORDERS_GET',
+  SET_CART: 'ORDERS_SET_CART'
 };

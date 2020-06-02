@@ -10,7 +10,7 @@ import FavoriteProduct from '../favoriteProducts';
 
 
 const MyFooter = ({
-  navigation, user, getAllProducts, products, userCart
+  navigation, user, getAllProducts, products, userCart, setCart
 }) => {
   const [ searchBarOpen, setSearchBarOpen ] = useState(false);
 
@@ -80,6 +80,7 @@ const MyFooter = ({
             orderScreenOpen={orderScreenOpen}
             handleOrderScreen={handleOrderScreen}
             userCart={userCart}
+            setCart={setCart}
           />
         )}
       {

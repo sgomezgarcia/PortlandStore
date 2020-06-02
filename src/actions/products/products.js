@@ -24,3 +24,8 @@ export const addToCart = (product) => (dispatch) => new Promise((resolve, reject
     dispatch({ type: ORDERS.ADD_CART, product });
     resolve();
 });
+
+export const setCart = (cart) => (dispatch) => new Promise((resolve, reject) => {
+    dispatch({ type: ORDERS.SET_CART, cart });
+    resolve();
+});
