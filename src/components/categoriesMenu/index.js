@@ -2,6 +2,8 @@ import React from 'react';
 import {
   View, Button, Text, Icon
 } from 'native-base';
+import Toast from 'react-native-simple-toast';
+
 import styles from './styles';
 
 const CategoriesMenu = ({
@@ -9,14 +11,19 @@ const CategoriesMenu = ({
   categoriesGender,
   filterByCategory,
   handleMenu,
+  navigation,
+  setMenuOpen
 }) => {
   const filterProducts = (category) => {
     filterByCategory(category)
       .then(() => {
         // navigate to products
+        navigation.navigate('Products');
+        setMenuOpen(false);
       })
       .catch(() => {
         // mostrar toast error
+        Toast.show('Error loading products...', Toast.LONG);
       });
   };
 
@@ -40,7 +47,7 @@ const CategoriesMenu = ({
       {
         'W' === categoriesGender && categories.woman && categories.woman.map((category, key) => (
           <View style={styles.menuLine} key={key} category={category}>
-            <Button style={styles.button} onPress={() => filterProducts(category)}>
+            <Button style={styles.button} onPress={() => filterProducts({ ...category, genre: 'woman' })}>
               <Text style={styles.text}>{category.name}</Text>
             </Button>
           </View>
@@ -49,8 +56,8 @@ const CategoriesMenu = ({
 
       {
         'M' === categoriesGender && categories.man && categories.man.map((category, key) => (
-          <View style={styles.menuLine} key={key} category={category} onPress={() => filterProducts(category)}>
-            <Button style={styles.button}>
+          <View style={styles.menuLine} key={key} category={category}>
+            <Button style={styles.button} onPress={() => filterProducts({ ...category, genre: 'man' })}>
               <Text style={styles.text}>{category.name}</Text>
             </Button>
           </View>

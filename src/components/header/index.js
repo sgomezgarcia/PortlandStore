@@ -30,9 +30,11 @@ const Header = ({ navigation, categories, filterByCategory }) => {
         <CategoriesMenu
           filterByCategory={filterByCategory}
           menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
           handleMenu={handleMenu}
           categoriesGender={categoriesGender}
           categories={categories}
+          navigation={navigation}
         />
       )}
     </View>

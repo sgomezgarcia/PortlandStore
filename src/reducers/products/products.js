@@ -15,7 +15,7 @@ const products = (state = initialState, action) => {
     case PRODUCTS.GET:
         return { ...state, products: action.products };
     case PRODUCTS.GET_FILTERED:
-      return { ...state, products: action.products };
+      return { ...state, filteredProducts: action.products };
     default:
       return { ...state };
   }

@@ -36,9 +36,10 @@ export const filterByCategory = (category) => (dispatch, getState) => {
         const { products } = getState().product;
         let filteredProducts = [ ...products ];
         if (category && category.id) {
-            filteredProducts = products.filter((item) => item.category === category.id);
+            filteredProducts = products.filter((item) => item.category === category.id && category.genre === item.gender);
             // Save products in store
             dispatch({ type: PRODUCTS.GET_FILTERED, products: filteredProducts });
+            resolve(filteredProducts);
         } else {
             reject(new Error('Wrong params'));
             // loading end

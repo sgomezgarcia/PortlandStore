@@ -8,7 +8,7 @@ import { addToCart, getAllProducts, favoriteProducts } from '../../actions/produ
 // pass redux state to component
 const mapStateToProps = ({ product }) => ({
   loading: product.loading,
-  products: product.products,
+  products: product.filteredProducts,
 });
 
 // pass actions to component

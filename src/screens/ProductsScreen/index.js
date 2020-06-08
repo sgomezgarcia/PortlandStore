@@ -9,7 +9,9 @@ const ProductsScreen = ({
   navigation, products, getAllProducts, addToCart, favoriteProducts
 }) => {
   useEffect(() => {
-    getAllProducts();
+    if (!products) {
+      getAllProducts();
+    }
   }, []);
 
   const scrollRef = useRef();
