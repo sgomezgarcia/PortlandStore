@@ -3,23 +3,33 @@ import { View, Text } from 'react-native';
 import {
   Button, Icon, Item, Input
 } from 'native-base';
+import Toast from 'react-native-simple-toast';
+
 import styles from './styles';
 
-const SignUp = ({ handleBackToLogin }) => {
+const SignUp = ({ handleBackToLogin, signUp, navigation }) => {
   const [ newUser, setNewUser ] = useState({});
 
   const formValidation = () => {
-    if (!newUser.email) {
-      console.warn('el puto email');
-    }
-    if (!newUser.password) {
-      console.warn('la pass bro');
-    }
-    if (!newUser.confirmPassword) {
-      console.warn('otra vez');
-    }
-    if (newUser.password !== newUser.confirmPassword) {
-      console.warn('no iguales');
+    if (newUser && newUser.email && newUser.password && newUser.confirmPassword && (newUser.password === newUser.confirmPassword)) {
+      signUp(newUser)
+      .then(() => {
+        Toast.show('User created and signIn', Toast.LONG);
+        navigation.navigate('Home');
+      });
+    } else {
+      if (!newUser.email) {
+        console.warn('el puto email');
+      }
+      if (!newUser.password) {
+        console.warn('la pass bro');
+      }
+      if (!newUser.confirmPassword) {
+        console.warn('otra vez');
+      }
+      if (newUser.password !== newUser.confirmPassword) {
+        console.warn('no iguales');
+      }
     }
   };
 

@@ -29,3 +29,18 @@ export const setCart = (cart) => (dispatch) => new Promise((resolve, reject) => 
     dispatch({ type: ORDERS.SET_CART, cart });
     resolve();
 });
+
+export const favoriteProducts = (productId) => (dispatch, getState) => new Promise((resolve, reject) => {
+    const useFunction = functions().httpsCallable('favoriteProduct');
+    const {user} = getState().general;
+    useFunction({
+        userId: user.uid,
+        products: productId
+    })
+    .then(() => {
+        resolve();
+    })
+    .catch((err) => {
+        reject(err);
+    });
+});

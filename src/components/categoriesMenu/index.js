@@ -5,7 +5,7 @@ import {
 import styles from './styles';
 
 const CategoriesMenu = ({
-  menuOpen, handleMenu, categoriesGender, categories
+  handleMenu, categoriesGender, categories
 }) => (
 
   <View style={styles.menu}>

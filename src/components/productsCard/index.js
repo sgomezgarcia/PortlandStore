@@ -5,7 +5,9 @@ import styles from './styles';
 import SelectedProduct from '../selectedProduct';
 
 
-const ProductsCard = ({ addToCart, product }) => {
+const ProductsCard = ({
+  addToCart, product, scrollRef, favoriteProducts
+ }) => {
   const [ showProduct, setShowProduct ] = useState(false);
 
   const selectProduct = () => {
@@ -26,7 +28,7 @@ const ProductsCard = ({ addToCart, product }) => {
             <Text style={styles.text}>{product.name}</Text>
             <Text style={styles.price}>{`${product.price} EUR`}</Text>
             <Button style={styles.button2} title="hola">
-              <Icon ios="ios-heart-empty" android="ios-heart-empty" style={styles.bookmark} onPress={() => handleFavoriteProduct()} />
+              <Icon ios="ios-heart-empty" android="ios-heart-empty" style={styles.bookmark} onPress={() => favoriteProducts(product.id)} />
             </Button>
           </View>
         </View>
@@ -36,8 +38,11 @@ const ProductsCard = ({ addToCart, product }) => {
         <SelectedProduct
           addToCart={addToCart}
           selectProduct={selectProduct}
+          scrollRef={scrollRef}
           product={product}
           handleOrderScreen={handleOrderScreen}
+          favoriteProducts={favoriteProducts}
+
         />
       )}
     </>

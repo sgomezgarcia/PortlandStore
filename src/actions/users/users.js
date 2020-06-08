@@ -7,14 +7,14 @@ const LOADING = { type: COMMON.LOADING };
 const LOADING_END = { type: COMMON.LOADING_END };
 
 const LOADING_USER = { type: COMMON.LOADING_USER };
-const LOADING_USER_END= { type: COMMON.LOADING_USER_END };
+const LOADING_USER_END = { type: COMMON.LOADING_USER_END };
 
 export const login = (userInfo) => (dispatch) => {
-  dispatch(LOADING);
+  dispatch(LOADING_USER);
   return new Promise((resolve, reject) => {
     if (!userInfo || !userInfo.email || !userInfo.password) {
       reject(new Error('Wrong params'));
-      dispatch(LOADING_END);
+      dispatch(LOADING_USER_END);
     } else {
       auth().signInWithEmailAndPassword(
         userInfo.email,
@@ -22,16 +22,42 @@ export const login = (userInfo) => (dispatch) => {
       )
         .then(({ user }) => {
           dispatch({ type: COMMON.LOGIN, user: user._user });
-          dispatch(LOADING_END);
+          dispatch(LOADING_USER_END);
           resolve(user);
         })
         .catch((error) => {
           reject(error);
-          dispatch(LOADING_END);
+          dispatch(LOADING_USER_END);
         });
     }
   });
 };
+
+export const signUp = (userInfo) => (dispatch) => new Promise((resolve, reject) => {
+  dispatch(LOADING_USER);
+    if (!userInfo || !userInfo.email || !userInfo.password) {
+      reject(new Error('Wrong params'));
+      dispatch(LOADING_USER_END);
+    } else {
+      auth()
+        .createUserWithEmailAndPassword(userInfo.email, userInfo.password)
+        .then(() => {
+          resolve();
+          console.warn('User account created & signed in!');
+          dispatch(LOADING_USER_END);
+        })
+        .catch((error) => {
+          if ('auth/email-already-in-use' === error.code) {
+            console.warn('That email address is already in use!');
+          }
+          if ('auth/invalid-email' === error.code) {
+            console.warn('That email address is invalid!');
+          }
+          console.error(error);
+          dispatch(LOADING_USER_END);
+          });
+      }
+});
 
 export const logout = (userInfo) => (dispatch) => {
   dispatch(LOADING_USER);
@@ -47,7 +73,7 @@ export const logout = (userInfo) => (dispatch) => {
       })
       .catch((error) => {
         reject(error);
-        dispatch(LOADING_END);
+        dispatch(LOADING_USER_END);
       });
   });
 };

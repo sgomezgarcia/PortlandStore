@@ -4,12 +4,12 @@ import { Button, Icon } from 'native-base';
 import styles from './styles';
 
 const OrderItem = ({
-item, showTrash, setCart, userCart, key
+item, showTrash, setCart, userCart, index
 }) => {
   const removeItem = () => {
-   const cart = userCart.splice(key, 1);
+   const cart = [ ...userCart ];
+   cart.splice(index, 1);
    setCart(cart);
-   console.warn(item);
   };
 
   return (

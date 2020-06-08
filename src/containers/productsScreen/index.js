@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 
 import ProductsScreen from '../../screens/ProductsScreen';
 
-import { addToCart, getAllProducts } from '../../actions/products/products';
+import { addToCart, getAllProducts, favoriteProducts } from '../../actions/products/products';
 
 // pass redux state to component
 const mapStateToProps = ({ product }) => ({
@@ -15,6 +15,7 @@ const mapStateToProps = ({ product }) => ({
 const mapDispatchToProps = (dispatch) => ({
   ...bindActionCreators({
     getAllProducts,
+    favoriteProducts,
     addToCart,
   }, dispatch)
 });

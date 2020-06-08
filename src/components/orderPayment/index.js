@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image } from 'react-native';
-import { Button, Input, Icon, Item } from 'native-base';
+import { Input, Icon, Item } from 'native-base';
 
 import styles from './styles';
 

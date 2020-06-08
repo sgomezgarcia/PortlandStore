@@ -105,7 +105,7 @@ const OrderPage = ({ handleOrderScreen, userCart, setCart }) => {
     <View style={styles.menu}>
       { renderEditButton()}
       {
-        mode === MODES.list && <ShoppingBag userCart={userCart} showTrash={showTrash} />
+        mode === MODES.list && <ShoppingBag userCart={userCart} showTrash={showTrash} setCart={setCart} />
       }
       {
         mode === MODES.card && <OrderPayment />

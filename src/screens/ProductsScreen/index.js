@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Screen from '../../components/base/screen';
@@ -6,15 +6,17 @@ import styles from './styles';
 import ProductsCard from '../../components/productsCard';
 
 const ProductsScreen = ({
-  navigation, products, getAllProducts, addToCart
+  navigation, products, getAllProducts, addToCart, favoriteProducts
 }) => {
   useEffect(() => {
     getAllProducts();
   }, []);
 
+  const scrollRef = useRef();
+
   return (
     <Screen header footer navigation={navigation}>
-      <ScrollView>
+      <ScrollView ref={scrollRef}>
         <View style={styles.productContainer}>
           {
             products && products.map((product, key) => (
@@ -22,6 +24,8 @@ const ProductsScreen = ({
                 addToCart={addToCart}
                 key={key}
                 product={product}
+                scrollRef={scrollRef}
+                favoriteProducts={favoriteProducts}
               />
             ))
           }

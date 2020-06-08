@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 
 import LoginScreen from '../../screens/LoginScreen';
 
-import { login } from '../../actions/users/users';
+import { login, signUp } from '../../actions/users/users';
 
 const mapStateToProps = ({ general }) => ({
   loading: general.loading,
@@ -11,7 +11,8 @@ const mapStateToProps = ({ general }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   ...bindActionCreators({
-    login
+    login,
+    signUp
   }, dispatch)
 });
 

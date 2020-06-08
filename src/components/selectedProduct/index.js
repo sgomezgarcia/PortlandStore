@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
 import { Button, Icon } from 'native-base';
 import Toast from 'react-native-simple-toast';
 import styles from './styles';
 
 const SelectedProduct = ({
- addToCart, product, handleOrderScreen, handleFavoriteProduct
+ addToCart, product, handleOrderScreen, handleFavoriteProduct, scrollRef, favoriteProducts
 }) => {
+  useEffect(() => {
+    scrollRef.current.scrollTo({x: 0, y: 0});
+  }, []);
   const [ showSizes, setShowSizes ] = useState(false);
   const ShowHideSizes = () => {
     if (true === showSizes) {
@@ -19,7 +22,7 @@ const SelectedProduct = ({
   return (
     <View style={styles.menu}>
       <View style={styles.menuLine2}>
-        <Button style={styles.button2} title="hola">
+        <Button style={styles.button2} title="hola" onPress={() => favoriteProducts(product.id)}>
           <Icon ios="ios-heart-empty" android="ios-heart-empty" style={styles.bookmark} onPress={() => handleFavoriteProduct()} />
         </Button>
         <Button style={styles.iconButton} onPress={handleOrderScreen} title="">
