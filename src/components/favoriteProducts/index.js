@@ -1,14 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, ImageBackground, Text } from 'react-native';
 import { Button, Icon } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
 import styles from './styles';
 
 const FavoriteProduct = ({
-  handleFavoriteProduct, getAllProducts, products
+  handleFavoriteProduct, getAllProducts, products, userFavorites
 }) => {
+  const [ favs, setFavs ] = useState(null);
   useEffect(() => {
-    getAllProducts();
+    if (!products) {
+      getAllProducts();
+    }
+    const findFavs = products.filter((item) => userFavorites.includes(item.id));
+    setFavs(findFavs);
   }, []);
 
   return (
@@ -28,7 +33,7 @@ const FavoriteProduct = ({
       <ScrollView style={styles.scroll}>
         <View style={styles.productContainer}>
           {
-            products && products.map((product, key) => (
+            favs && favs.map((product, key) => (
               <View key={key} product={product} style={styles.card}>
                 <ImageBackground source={{ uri: product.cover }} style={styles.image} />
               </View>

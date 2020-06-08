@@ -10,7 +10,7 @@ import FavoriteProduct from '../favoriteProducts';
 
 
 const MyFooter = ({
-  navigation, user, getAllProducts, products, userCart, setCart
+  navigation, user, getAllProducts, products, userCart, setCart, userFavorites
 }) => {
   const [ searchBarOpen, setSearchBarOpen ] = useState(false);
 
@@ -86,6 +86,7 @@ const MyFooter = ({
       {
         favoriteOpen && (
           <FavoriteProduct
+            userFavorites={userFavorites}
             favoriteOpen={favoriteOpen}
             handleFavoriteProduct={handleFavoriteProduct}
             getAllProducts={getAllProducts}

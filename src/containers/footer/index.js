@@ -8,7 +8,8 @@ import { getAllProducts, setCart } from '../../actions/products/products';
 const mapStateToProps = ({ general, product }) => ({
   user: general.user,
   products: product.products,
-  userCart: general.userCart
+  userCart: general.userCart,
+  userFavorites: general.userFavorites
 });
 
 const mapDispatchToProps = (dispatch) => ({ // acciones
