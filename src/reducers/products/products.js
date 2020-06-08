@@ -2,7 +2,8 @@ import { PRODUCTS } from '../../utils/dispatchTypes';
 
 export const initialState = {
   loading: false,
-  products: []
+  products: [],
+  filteredProducts: []
 };
 
 const products = (state = initialState, action) => {
@@ -13,6 +14,8 @@ const products = (state = initialState, action) => {
       return { ...state, loading: false };
     case PRODUCTS.GET:
         return { ...state, products: action.products };
+    case PRODUCTS.GET_FILTERED:
+      return { ...state, products: action.products };
     default:
       return { ...state };
   }

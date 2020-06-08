@@ -30,6 +30,22 @@ export const setCart = (cart) => (dispatch) => new Promise((resolve, reject) => 
     resolve();
 });
 
+export const filterByCategory = (category) => (dispatch, getState) => {
+    // loading
+    return new Promise((resolve, reject) => {
+        const { products } = getState().product;
+        let filteredProducts = [ ...products ];
+        if (category && category.id) {
+            filteredProducts = products.filter((item) => item.category === category.id);
+            // Save products in store
+            dispatch({ type: PRODUCTS.GET_FILTERED, products: filteredProducts });
+        } else {
+            reject(new Error('Wrong params'));
+            // loading end
+        }
+    });
+};
+
 export const favoriteProducts = (productId) => (dispatch, getState) => new Promise((resolve, reject) => {
     const useFunction = functions().httpsCallable('favoriteProduct');
     const {user} = getState().general;

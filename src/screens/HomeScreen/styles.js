@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
 import { COLORS } from '../../utils/constants';
+import { DimensionPercentage } from '../../utils/helpers';
 
 const styles = StyleSheet.create({
 
@@ -14,11 +15,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
-    paddingVertical: RFPercentage(15),
+    paddingVertical: DimensionPercentage(5, 'height'),
     resizeMode: 'cover',
     justifyContent: 'center',
     alignItems: 'center',
-    height: RFPercentage(85),
+    height: DimensionPercentage(90, 'height'),
 
   },
 

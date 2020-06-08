@@ -4,7 +4,7 @@ import { Button } from 'native-base';
 import styles from './styles';
 import CategoriesMenu from '../categoriesMenu';
 
-const Header = ({ navigation, categories }) => {
+const Header = ({ navigation, categories, filterByCategory }) => {
   const [ menuOpen, setMenuOpen ] = useState(false);
   const [ categoriesGender, setCategoriesGender ] = useState(null);
 
@@ -28,6 +28,7 @@ const Header = ({ navigation, categories }) => {
       {
         menuOpen && (
         <CategoriesMenu
+          filterByCategory={filterByCategory}
           menuOpen={menuOpen}
           handleMenu={handleMenu}
           categoriesGender={categoriesGender}
