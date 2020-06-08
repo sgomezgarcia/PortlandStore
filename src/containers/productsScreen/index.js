@@ -6,9 +6,10 @@ import ProductsScreen from '../../screens/ProductsScreen';
 import { addToCart, getAllProducts, favoriteProducts } from '../../actions/products/products';
 
 // pass redux state to component
-const mapStateToProps = ({ product }) => ({
+const mapStateToProps = ({ general, product }) => ({
   loading: product.loading,
   products: product.filteredProducts,
+  userFavorites: general.userFavorites
 });
 
 // pass actions to component

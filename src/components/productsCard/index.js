@@ -6,7 +6,7 @@ import SelectedProduct from '../selectedProduct';
 
 
 const ProductsCard = ({
-  addToCart, product, scrollRef, favoriteProducts
+  addToCart, product, scrollRef, favoriteProducts, favorite
  }) => {
   const [ showProduct, setShowProduct ] = useState(false);
 
@@ -28,7 +28,12 @@ const ProductsCard = ({
             <Text style={styles.text}>{product.name}</Text>
             <Text style={styles.price}>{`${product.price} EUR`}</Text>
             <Button style={styles.button2} title="hola">
-              <Icon ios="ios-heart-empty" android="ios-heart-empty" style={styles.bookmark} onPress={() => favoriteProducts(product.id)} />
+              <Icon
+                ios={favorite ? 'ios-heart' : 'ios-heart-empty'}
+                android={favorite ? 'ios-heart' : 'ios-heart-empty'}
+                style={styles.bookmark}
+                onPress={() => favoriteProducts(product.id)}
+              />
             </Button>
           </View>
         </View>

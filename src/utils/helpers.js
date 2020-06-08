@@ -16,3 +16,11 @@ export const DimensionPercentage = (number, mode) => {
     const dimensions = getDimensions();
     return ((dimensions[mode]) * number);
 };
+
+export const getFavsIds = (data) => {
+    const ids = [];
+    for (let i = 0; i < data.length; i++) {
+        ids.push(data[i].products);
+    }
+    return ids;
+};

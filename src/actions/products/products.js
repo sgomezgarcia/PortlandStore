@@ -1,5 +1,6 @@
 import functions from '@react-native-firebase/functions';
-import { PRODUCTS, ORDERS } from '../../utils/dispatchTypes';
+import { PRODUCTS, ORDERS, COMMON } from '../../utils/dispatchTypes';
+import { getFavsIds } from '../../utils/helpers';
 
 const LOADING = { type: PRODUCTS.LOADING };
 const LOADING_END = { type: PRODUCTS.LOADING_END };
@@ -47,14 +48,33 @@ export const filterByCategory = (category) => (dispatch, getState) => {
     });
 };
 
+export const getMyFavoriteProducts = (userId) => (dispatch) => {
+    const useFunction = functions().httpsCallable('getFavoritesByUser');
+    return new Promise((resolve, reject) => {
+        useFunction({
+            userId
+        })
+        .then(({ data }) => {
+            const userFavorites = getFavsIds(data.data);
+            dispatch({ type: COMMON.GET_FAVS, userFavorites });
+            resolve();
+        })
+        .catch((err) => {
+            reject(err);
+        });
+    });
+};
+
 export const favoriteProducts = (productId) => (dispatch, getState) => new Promise((resolve, reject) => {
-    const useFunction = functions().httpsCallable('favoriteProduct');
+    const useFunction = functions().httpsCallable('favoriteProducts');
     const {user} = getState().general;
     useFunction({
-        userId: user.uid,
-        products: productId
+        favoriteProducts: {
+            userId: user.uid,
+            products: productId
+        }
     })
-    .then(() => {
+    .then((response) => {
         resolve();
     })
     .catch((err) => {
