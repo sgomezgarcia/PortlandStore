@@ -106,3 +106,22 @@ export const getOrdersByUser = () => (dispatch, getState) => {
       });
   });
 };
+
+export const createOrders = (order) => (dispatch, getState) => new Promise((resolve, reject) => {
+  const useFunction = functions().httpsCallable('createOrders');
+  const {user} = getState().general;
+  useFunction({
+      createOrders: {
+          userId: user.uid,
+          order
+      }
+  })
+  .then((response) => {
+      resolve();
+      console.warn(' oh yes');
+  })
+  .catch((err) => {
+      reject(err);
+      console.warn('oh no');
+  });
+});

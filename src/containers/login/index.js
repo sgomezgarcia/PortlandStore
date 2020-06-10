@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 
 import LoginScreen from '../../screens/LoginScreen';
 
-import { login, signUp } from '../../actions/users/users';
+import { login, signUp, getOrdersByUser } from '../../actions/users/users';
 
 const mapStateToProps = ({ general }) => ({
   loading: general.loading,
@@ -12,7 +12,8 @@ const mapStateToProps = ({ general }) => ({
 const mapDispatchToProps = (dispatch) => ({
   ...bindActionCreators({
     login,
-    signUp
+    signUp,
+    getOrdersByUser
   }, dispatch)
 });
 

@@ -4,7 +4,10 @@ import { Button, Icon } from 'native-base';
 import styles from './styles';
 
 const OrderItem = ({
-item, showTrash, setCart, userCart, index
+item, showTrash,
+setCart,
+userCart,
+index,
 }) => {
   const removeItem = () => {
    const cart = [ ...userCart ];
@@ -24,6 +27,7 @@ item, showTrash, setCart, userCart, index
           <Text style={styles.size}>{item.size}</Text>
         </View>
         <Text style={styles.price}>{`${item.price} EUR`}</Text>
+        {}
         {
           showTrash && (
           <Button style={styles.iconButton} title="hola" onPress={removeItem}>

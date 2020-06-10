@@ -12,7 +12,12 @@ const MODES = {
   success: 'success'
 };
 
-const OrderPage = ({ handleOrderScreen, userCart, setCart }) => {
+const OrderPage = ({
+  handleOrderScreen,
+  userCart,
+  setCart,
+  createOrders
+}) => {
   const [ mode, setMode ] = useState(MODES.list);
   const [ showTrash, setShowTrash ] = useState(false);
   const editButton = () => {
@@ -36,7 +41,11 @@ const OrderPage = ({ handleOrderScreen, userCart, setCart }) => {
       buttonType.action = () => setMode(MODES.card);
     } else if (mode === MODES.card) {
       buttonType.text = 'pay';
-      buttonType.action = () => setMode(MODES.success);
+      buttonType.action = () => {
+        createOrders(userCart)
+          .then(() => {
+            setMode(MODES.success);
+          })
     }
 
     if (buttonType && buttonType.text && buttonType.action) {
