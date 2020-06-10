@@ -45,7 +45,8 @@ const OrderPage = ({
         createOrders(userCart)
           .then(() => {
             setMode(MODES.success);
-          })
+          });
+        };
     }
 
     if (buttonType && buttonType.text && buttonType.action) {
@@ -125,7 +126,7 @@ const OrderPage = ({
 
       { renderButton()}
     </View>
-
   );
 };
+
 export default OrderPage;

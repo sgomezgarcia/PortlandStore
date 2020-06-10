@@ -1,7 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import functions from '@react-native-firebase/functions';
 
-import { COMMON } from '../../utils/dispatchTypes';
+import { COMMON, ORDERS } from '../../utils/dispatchTypes';
 
 const LOADING = { type: COMMON.LOADING };
 const LOADING_END = { type: COMMON.LOADING_END };
@@ -116,12 +116,11 @@ export const createOrders = (order) => (dispatch, getState) => new Promise((reso
           order
       }
   })
-  .then((response) => {
-      resolve();
-      console.warn(' oh yes');
+  .then(() => {
+    dispatch({ type: ORDERS.SET_CART, cart: [] });
+    resolve();
   })
   .catch((err) => {
       reject(err);
-      console.warn('oh no');
   });
 });
