@@ -22,7 +22,7 @@ const SearchBar = ({
   const handleChange = (value) => {
     setSearch(value);
     if (3 <= value.length) {
-      const getFilteredProducts = products.filter((item) => (item.name.includes(value)));
+      const getFilteredProducts = products.filter((item) => (item.name.toLowerCase().includes(value.toLowerCase())));
       setFilteredProducts(getFilteredProducts);
     }
   };
