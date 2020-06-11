@@ -56,8 +56,11 @@ export const filterByGender = (gender) => (dispatch, getState) => new Promise((r
         resolve(filteredProducts);
     });
 
-export const getMyFavoriteProducts = (userId) => (dispatch) => {
+export const getMyFavoriteProducts = () => (dispatch, getState) => {
+    const { user } = getState().general;
+    const userId = user.uid;
     const useFunction = functions().httpsCallable('getFavoritesByUser');
+    dispatch({ type: PRODUCTS.LOADING });
     return new Promise((resolve, reject) => {
         useFunction({
             userId
@@ -65,10 +68,12 @@ export const getMyFavoriteProducts = (userId) => (dispatch) => {
         .then(({ data }) => {
             const userFavorites = getFavsIds(data.data);
             dispatch({ type: COMMON.GET_FAVS, userFavorites });
-            resolve();
+            dispatch({ type: PRODUCTS.LOADING_END });
+            resolve(userFavorites);
         })
         .catch((err) => {
             reject(err);
+            dispatch({ type: PRODUCTS.LOADING_END });
         });
     });
 };

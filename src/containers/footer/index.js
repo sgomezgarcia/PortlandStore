@@ -10,7 +10,8 @@ const mapStateToProps = ({ general, product }) => ({
   user: general.user,
   products: product.products,
   userCart: general.userCart,
-  userFavorites: general.userFavorites
+  userFavorites: general.userFavorites,
+  loading: product.loading
 });
 
 const mapDispatchToProps = (dispatch) => ({ // acciones
