@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
+import { DimensionPercentage } from '../../utils/helpers';
 
 
 const styles = StyleSheet.create({
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: RFValue(25),
         color: 'white',
-    }
+    },
 });
 
 export default styles;

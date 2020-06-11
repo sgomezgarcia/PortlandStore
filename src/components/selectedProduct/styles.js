@@ -56,6 +56,10 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
 
+    textOrder: {
+        display: 'flex',
+    },
+
     closeIcon: {
         color: 'black',
         fontSize: RFValue(40),

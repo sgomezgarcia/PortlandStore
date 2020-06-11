@@ -100,6 +100,7 @@ export const getOrdersByUser = () => (dispatch, getState) => {
     useFunction({ userId: user.uid })
       .then((res) => {
         resolve(res);
+        dispatch({type: COMMON.GET_ORDERS, userOrders: res});
       })
       .catch((err) => {
         reject(err);
@@ -113,7 +114,8 @@ export const createOrders = (order) => (dispatch, getState) => new Promise((reso
   useFunction({
       createOrders: {
           userId: user.uid,
-          order
+          order,
+          date: new Date()
       }
   })
   .then(() => {

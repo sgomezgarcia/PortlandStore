@@ -5,7 +5,8 @@ export const COMMON = {
   LOADING_USER_END: 'LOADING_USER_END',
   LOGIN: 'LOGIN',
   LOGOUT: 'LOGOUT',
-  GET_FAVS: 'GET_FAVS'
+  GET_FAVS: 'GET_FAVS',
+  GET_ORDERS: 'GET_ORDERS'
 };
 
 export const PRODUCTS = {

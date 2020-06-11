@@ -23,17 +23,12 @@ const UserProfileScreen = ({
           </Text>
           <View style={styles.infoProfile}>
             <View style={styles.userInfo}>
-              <Button style={styles.buttons}>
+              <Button style={styles.buttons} onPress={() => navigation.navigate('MyOrders')}>
                 <Text style={styles.textInfo}>my orders</Text>
                 <Icon ios="ios-arrow-dropright" android="ios-arrow-dropright" style={styles.orderIcon} />
               </Button>
             </View>
-            <View style={styles.userInfo}>
-              <Button style={styles.buttons}>
-                <Text style={styles.textInfo}>my information</Text>
-                <Icon ios="ios-arrow-dropright" android="ios-arrow-dropright" style={styles.orderIcon} />
-              </Button>
-            </View>
+
             <View style={styles.userInfo}>
               <Button style={styles.buttons}>
                 <Text style={styles.textInfo}>wallet</Text>

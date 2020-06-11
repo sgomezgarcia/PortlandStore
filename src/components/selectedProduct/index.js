@@ -38,7 +38,7 @@ const SelectedProduct = ({
           source={{ uri: product.cover }}
           style={styles.productImage}
         />
-        <View>
+        <View style={styles.textOrder}>
           <Text style={styles.shoppingTitle}>{product.name}</Text>
           <Text style={styles.productNumber}>{product.description}</Text>
           <Text style={styles.shoppingTitle}>{`${product.price} EUR`}</Text>

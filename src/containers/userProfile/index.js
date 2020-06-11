@@ -8,6 +8,7 @@ import {logout} from '../../actions/users/users';
 const mapStateToProps = ({ general }) => ({
     loading: general.loading_user,
     user: general.user,
+    userOrders: general.userOrders
 });
 
 const mapDispatchToProps = (dispatch) => ({

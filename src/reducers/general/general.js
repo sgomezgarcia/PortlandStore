@@ -7,7 +7,8 @@ export const initialState = {
   categories: [],
   orders: [],
   userCart: [],
-  userFavorites: []
+  userFavorites: [],
+  userOrders: []
 };
 
 const general = (state = initialState, action) => {
@@ -30,6 +31,8 @@ const general = (state = initialState, action) => {
       return { ...state, orders: action.orders};
     case COMMON.GET_FAVS:
       return { ...state, userFavorites: action.userFavorites};
+    case COMMON.GET_ORDERS:
+      return { ...state, userOrders: action.userOrders};
     case ORDERS.ADD_CART:
       return { ...state, userCart: [ ...state.userCart, action.product ]};
     case ORDERS.SET_CART:

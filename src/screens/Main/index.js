@@ -11,6 +11,7 @@ import styles from './styles';
 // Screens
 import LoginScreen from '../../containers/login';
 import HomeScreen from '../HomeScreen';
+import MyOrdersScreen from '../../containers/myOrders';
 import ProductsScreen from '../../containers/productsScreen';
 import UserProfileScreen from '../../containers/userProfile';
 import LoadingLottie from '../../assets/lotties/loading2.json';
@@ -64,6 +65,13 @@ const Main = ({ loading, initApp, getOrdersByUser }) => {
         <Stack.Screen
           name="Login"
           component={LoginScreen}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="MyOrders"
+          component={MyOrdersScreen}
           options={{
             headerShown: false
           }}
