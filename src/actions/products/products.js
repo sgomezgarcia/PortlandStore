@@ -21,19 +21,17 @@ export const getAllProducts = () => (dispatch) => {
     });
 };
 
-export const addToCart = (product) => (dispatch) => new Promise((resolve, reject) => {
+export const addToCart = (product) => (dispatch) => new Promise((resolve) => {
     dispatch({ type: ORDERS.ADD_CART, product });
     resolve();
 });
 
-export const setCart = (cart) => (dispatch) => new Promise((resolve, reject) => {
+export const setCart = (cart) => (dispatch) => new Promise((resolve) => {
     dispatch({ type: ORDERS.SET_CART, cart });
     resolve();
 });
 
-export const filterByCategory = (category) => (dispatch, getState) => {
-    // loading
-    return new Promise((resolve, reject) => {
+export const filterByCategory = (category) => (dispatch, getState) => new Promise((resolve, reject) => {
         const { products } = getState().product;
         let filteredProducts = [ ...products ];
         if (category && category.id) {
@@ -46,7 +44,17 @@ export const filterByCategory = (category) => (dispatch, getState) => {
             // loading end
         }
     });
-};
+
+export const filterByGender = (gender) => (dispatch, getState) => new Promise((resolve) => {
+        const { products } = getState().product;
+        let filteredProducts = [ ...products ];
+        if (gender) {
+            const filterRes = filteredProducts.filter((item) => (item.gender === gender || !item.gender));
+            filteredProducts = filterRes;
+        }
+        dispatch({ type: PRODUCTS.GET_FILTERED, products: filteredProducts });
+        resolve(filteredProducts);
+    });
 
 export const getMyFavoriteProducts = (userId) => (dispatch) => {
     const useFunction = functions().httpsCallable('getFavoritesByUser');
@@ -74,7 +82,7 @@ export const favoriteProducts = (productId) => (dispatch, getState) => new Promi
             products: productId
         }
     })
-    .then((response) => {
+    .then(() => {
         resolve();
     })
     .catch((err) => {

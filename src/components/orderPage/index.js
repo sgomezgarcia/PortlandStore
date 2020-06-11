@@ -20,6 +20,8 @@ const OrderPage = ({
 }) => {
   const [ mode, setMode ] = useState(MODES.list);
   const [ showTrash, setShowTrash ] = useState(false);
+  const [ paymentForm, setPaymentForm ] = useState({});
+  const [ errorCard, setErrorCard ] = useState(false);
   const editButton = () => {
     setShowTrash(!showTrash);
   };
@@ -42,11 +44,15 @@ const OrderPage = ({
     } else if (mode === MODES.card) {
       buttonType.text = 'pay';
       buttonType.action = () => {
-        createOrders(userCart)
-          .then(() => {
-            setMode(MODES.success);
-          });
-        };
+        if (paymentForm && paymentForm.card && paymentForm.expire && paymentForm.cvv && paymentForm.holder) {
+          createOrders(userCart)
+            .then(() => {
+              setMode(MODES.success);
+            });
+        } else {
+          setErrorCard(true);
+        }
+      };
     }
 
     if (buttonType && buttonType.text && buttonType.action) {
@@ -118,7 +124,7 @@ const OrderPage = ({
         mode === MODES.list && <ShoppingBag userCart={userCart} showTrash={showTrash} setCart={setCart} />
       }
       {
-        mode === MODES.card && <OrderPayment />
+        mode === MODES.card && <OrderPayment errorCard={errorCard} paymentForm={paymentForm} setPaymentForm={setPaymentForm} />
       }
       {
         mode === MODES.success && <SuccessLottie />

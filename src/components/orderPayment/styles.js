@@ -13,6 +13,17 @@ const styles = StyleSheet.create({
         marginRight: RFValue(20)
     },
 
+    errorCard: {
+        margin: DimensionPercentage(5, 'width'),
+        width: DimensionPercentage(90, 'width'),
+        padding: RFValue(10),
+        backgroundColor: 'red'
+    },
+    textErrorCard: {
+        color: COLORS.white,
+        fontSize: 15,
+        fontWeight: 'bold'
+    },
     inputsView: {
         backgroundColor: COLORS.white,
         height: DimensionPercentage(70, 'height'),

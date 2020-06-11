@@ -82,7 +82,7 @@ export const setUser = (user) => (dispatch) => dispatch({ type: COMMON.LOGIN, us
 
 export const autoLogin = () => (dispatch) => {
   dispatch(LOADING);
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     auth().onAuthStateChanged((loggedUser) => {
       if (loggedUser) {
         dispatch({ type: COMMON.LOGIN, user: loggedUser._user });
@@ -120,6 +120,7 @@ export const createOrders = (order) => (dispatch, getState) => new Promise((reso
   })
   .then(() => {
     dispatch({ type: ORDERS.SET_CART, cart: [] });
+    dispatch(getOrdersByUser());
     resolve();
   })
   .catch((err) => {

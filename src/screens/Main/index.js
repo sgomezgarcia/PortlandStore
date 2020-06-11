@@ -10,7 +10,7 @@ import styles from './styles';
 
 // Screens
 import LoginScreen from '../../containers/login';
-import HomeScreen from '../HomeScreen';
+import HomeScreen from '../../containers/homeScreen';
 import MyOrdersScreen from '../../containers/myOrders';
 import ProductsScreen from '../../containers/productsScreen';
 import UserProfileScreen from '../../containers/userProfile';
