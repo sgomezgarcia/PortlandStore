@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Animation from 'lottie-react-native';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -29,6 +29,7 @@ const Main = ({ loading, initApp, getOrdersByUser }) => {
   if (loading) {
     return (
       <View style={styles.lottie}>
+        <Text>PORTLAND</Text>
         <Animation
           autoPlay
           loop

@@ -13,7 +13,10 @@ const SearchBar = ({
   const [ search, setSearch ] = useState();
   const [ filteredProducts, setFilteredProducts ] = useState([]);
   useEffect(() => {
-    getAllProducts();
+    if (!products || 0 < products.length) {
+      getAllProducts();
+    }
+    setFilteredProducts(products);
   }, []);
 
   const handleChange = (value) => {
