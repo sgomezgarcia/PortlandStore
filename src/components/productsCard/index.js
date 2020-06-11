@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, ImageBackground } from 'react-native';
 import { Button, Icon } from 'native-base';
 import styles from './styles';
@@ -9,6 +9,13 @@ const ProductsCard = ({
   addToCart, product, scrollRef, favoriteProducts, favorite
  }) => {
   const [ showProduct, setShowProduct ] = useState(false);
+  const [ saved, setSaved ] = useState(false);
+
+  useEffect(() => {
+    if (favorite) {
+      setSaved(true);
+    }
+  }, []);
 
   const selectProduct = () => {
     setShowProduct(!showProduct);
@@ -29,10 +36,19 @@ const ProductsCard = ({
             <Text style={styles.price}>{`${product.price} EUR`}</Text>
             <Button style={styles.button2} title="hola">
               <Icon
-                ios={favorite ? 'ios-heart' : 'ios-heart-empty'}
-                android={favorite ? 'ios-heart' : 'ios-heart-empty'}
+                ios={saved ? 'ios-heart' : 'ios-heart-empty'}
+                android={saved ? 'ios-heart' : 'ios-heart-empty'}
                 style={styles.bookmark}
-                onPress={() => favoriteProducts(product.id)}
+                onPress={() => {
+                  if (!saved) {
+                    favoriteProducts(product.id)
+                      .then(() => {
+                        setSaved(true);
+                      });
+                  } else {
+                    setSaved(false);
+                  }
+                }}
               />
             </Button>
           </View>

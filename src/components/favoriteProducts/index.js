@@ -5,13 +5,14 @@ import { ScrollView } from 'react-native-gesture-handler';
 import styles from './styles';
 
 const FavoriteProduct = ({
-  handleFavoriteProduct, getAllProducts, products, userFavorites
+  getMyFavoriteProducts, handleFavoriteProduct, getAllProducts, products, userFavorites
 }) => {
   const [ favs, setFavs ] = useState(null);
   useEffect(() => {
     if (!products) {
       getAllProducts();
     }
+    getMyFavoriteProducts();
     const findFavs = products.filter((item) => userFavorites.includes(item.id));
     setFavs(findFavs);
   }, []);

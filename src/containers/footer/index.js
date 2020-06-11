@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import footer from '../../components/footer';
-import { getAllProducts, setCart } from '../../actions/products/products';
+import { getAllProducts, setCart, getMyFavoriteProducts } from '../../actions/products/products';
 import { createOrders } from '../../actions/users/users';
 
 
@@ -17,7 +17,8 @@ const mapDispatchToProps = (dispatch) => ({ // acciones
   ...bindActionCreators({
     getAllProducts,
     setCart,
-    createOrders
+    createOrders,
+    getMyFavoriteProducts
   }, dispatch)
 });
 

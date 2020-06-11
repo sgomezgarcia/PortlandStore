@@ -17,7 +17,8 @@ const MyFooter = ({
   userCart,
   setCart,
   userFavorites,
-  createOrders
+  createOrders,
+  getMyFavoriteProducts
 }) => {
   const [ searchBarOpen, setSearchBarOpen ] = useState(false);
 
@@ -99,6 +100,7 @@ const MyFooter = ({
             handleFavoriteProduct={handleFavoriteProduct}
             getAllProducts={getAllProducts}
             products={products}
+            getMyFavoriteProducts={getMyFavoriteProducts}
           />
         )}
 
