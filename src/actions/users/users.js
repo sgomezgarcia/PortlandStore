@@ -1,6 +1,8 @@
 import auth from '@react-native-firebase/auth';
 import functions from '@react-native-firebase/functions';
 
+import { format } from 'date-fns';
+
 import { COMMON, ORDERS } from '../../utils/dispatchTypes';
 
 const LOADING = { type: COMMON.LOADING };
@@ -89,16 +91,15 @@ export const autoLogin = () => (dispatch) => {
         dispatch({ type: COMMON.LOGIN, user: loggedUser._user });
       }
       dispatch(LOADING_END);
-      resolve();
+      resolve(loggedUser._user);
   });
   });
 };
 
-export const getOrdersByUser = () => (dispatch, getState) => {
+export const getOrdersByUser = (userId) => (dispatch) => {
   const useFunction = functions().httpsCallable('getProductsByUserId');
-  const {user} = getState().general;
   return new Promise((resolve, reject) => {
-    useFunction({ userId: user.uid })
+    useFunction({ userId })
       .then(({ data }) => {
         resolve(data);
         dispatch({type: COMMON.GET_ORDERS, userOrders: data });
@@ -112,16 +113,17 @@ export const getOrdersByUser = () => (dispatch, getState) => {
 export const createOrders = (order) => (dispatch, getState) => new Promise((resolve, reject) => {
   const useFunction = functions().httpsCallable('createOrders');
   const {user} = getState().general;
+  const date = format(new Date(), 'dd/MM/yyyy');
   useFunction({
       createOrders: {
           userId: user.uid,
           order,
-          date: new Date()
+          date
       }
   })
   .then(() => {
     dispatch({ type: ORDERS.SET_CART, cart: [] });
-    dispatch(getOrdersByUser());
+    dispatch(getOrdersByUser(user.uid));
     resolve();
   })
   .catch((err) => {

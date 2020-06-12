@@ -1,20 +1,26 @@
 import { getAllCategories } from '../categories/categories';
 import { getAllProducts, getMyFavoriteProducts } from '../products/products';
-import { autoLogin } from '../users/users';
+import { autoLogin, getOrdersByUser } from '../users/users';
 import { COMMON } from '../../utils/dispatchTypes';
 
-export const initApp = () => (dispatch, getState) => Promise.all([
+export const initApp = () => (dispatch) => Promise.all([
         dispatch(getAllCategories()),
-        dispatch(autoLogin()),
         dispatch(getAllProducts())
     ])
         .then(() => {
-            const {user} = getState().general;
-            if (user && user.uid) {
-                dispatch(getMyFavoriteProducts(user.uid));
-            }
-            dispatch({ type: COMMON.LOADING_END });
-            Promise.resolve();
+            dispatch(autoLogin())
+                .then((userLogged) => {
+                    if (userLogged && userLogged.uid) {
+                        dispatch(getMyFavoriteProducts(userLogged.uid));
+                        dispatch(getOrdersByUser(userLogged.uid));
+                    }
+                    dispatch({ type: COMMON.LOADING_END });
+                    Promise.resolve();
+                })
+                .catch(() => {
+                    dispatch({ type: COMMON.LOADING_END });
+                    Promise.resolve();
+                });
         })
         .catch(() => {
             Promise.reject();

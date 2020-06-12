@@ -23,8 +23,8 @@ const MyOrdersScreen = ({ userOrders, navigation }) => {
       <ScrollView>
         <View style={styles.ordersScreen}>
           {
-            userOrders && userOrders.data && userOrders.data.data && 0 < userOrders.data.data.length &&
-              userOrders.data.data.map((order, key) => (
+            userOrders && userOrders.data && userOrders.data && 0 < userOrders.data.length &&
+              userOrders.data.map((order, key) => (
                 <View key={key} style={styles.orderLine}>
                   {
                     order && order.order && 0 < order.order.length && (
@@ -34,7 +34,7 @@ const MyOrdersScreen = ({ userOrders, navigation }) => {
                       />
                     )}
                   <View>
-                    { order && order.date && <Text style={styles.textOrder}>{format(new Date(order.date), 'dd/MM/yyyy')}</Text>}
+                    { order && order.date && <Text style={styles.textOrder}>{order.date}</Text>}
                     <Text style={styles.textOrder}>{`${order.order.length} Items`}</Text>
                     <Text style={styles.textOrder}>{getOrderPrice(order.order)}</Text>
                   </View>
