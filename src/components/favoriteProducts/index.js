@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, ImageBackground, Text } from 'react-native';
 import { Button, Icon } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
+import Animation from 'lottie-react-native';
+import LoadingLottie from '../../assets/lotties/loading2.json';
 import styles from './styles';
 
 const FavoriteProduct = ({
@@ -19,36 +21,44 @@ const FavoriteProduct = ({
       });
   }, []);
 
-  if (loading) {
-    return <Text>Loading favorite products...</Text>;
-  }
-
   return (
     <View style={styles.menu}>
-      <View style={styles.menuLine2}>
-        <Button style={styles.iconButton} onPress={handleFavoriteProduct} title="">
-          <Icon
-            ios="ios-close"
-            android="ios-close"
-            style={styles.closeIcon}
+      {
+        loading ? (
+          <Animation
+            autoPlay
+            loop
+            source={LoadingLottie}
           />
-        </Button>
-      </View>
-      <View style={styles.titleContainer}>
-        <Text style={styles.shoppingTitle}>my list</Text>
-      </View>
-      <ScrollView style={styles.scroll}>
-        <View style={styles.productContainer}>
-          {
-            favs && favs.map((product, key) => (
-              <View key={key} product={product} style={styles.card}>
-                <ImageBackground source={{ uri: product.cover }} style={styles.image} />
+        ) : (
+          <>
+            <View style={styles.menuLine2}>
+              <Button style={styles.iconButton} onPress={handleFavoriteProduct} title="">
+                <Icon
+                  ios="ios-close"
+                  android="ios-close"
+                  style={styles.closeIcon}
+                />
+              </Button>
+            </View>
+            <View style={styles.titleContainer}>
+              <Text style={styles.shoppingTitle}>my list</Text>
+            </View>
+            <ScrollView style={styles.scroll}>
+              <View style={styles.productContainer}>
+                {
+                favs && favs.map((product, key) => (
+                  <View key={key} product={product} style={styles.card}>
+                    <ImageBackground source={{ uri: product.cover }} style={styles.image} />
+                  </View>
+                ))
+              }
               </View>
-))
-          }
-        </View>
-      </ScrollView>
+            </ScrollView>
+          </>
+        )}
     </View>
+
   );
 };
 

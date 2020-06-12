@@ -29,13 +29,12 @@ const UserProfileScreen = ({
               </Button>
             </View>
             <View style={styles.userInfo}>
-              <Button style={styles.buttons}>
+              <Button style={styles.buttons} onPress={handleLogout}>
                 <Text style={styles.textInfo}>logout</Text>
                 <Icon
                   ios="md-log-out"
                   android="md-log-out"
                   style={styles.orderIcon}
-                  onPress={handleLogout}
                 />
               </Button>
               {
