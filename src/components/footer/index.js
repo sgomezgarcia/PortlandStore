@@ -102,6 +102,7 @@ const MyFooter = ({
             handleFavoriteProduct={handleFavoriteProduct}
             getAllProducts={getAllProducts}
             products={products}
+            user={user}
             getMyFavoriteProducts={getMyFavoriteProducts}
           />
         )}

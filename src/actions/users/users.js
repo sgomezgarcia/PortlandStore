@@ -4,12 +4,27 @@ import functions from '@react-native-firebase/functions';
 import { format } from 'date-fns';
 
 import { COMMON, ORDERS } from '../../utils/dispatchTypes';
+import { getMyFavoriteProducts } from '../products/products';
 
 const LOADING = { type: COMMON.LOADING };
 const LOADING_END = { type: COMMON.LOADING_END };
 
 const LOADING_USER = { type: COMMON.LOADING_USER };
 const LOADING_USER_END = { type: COMMON.LOADING_USER_END };
+
+export const getOrdersByUser = (userId) => (dispatch) => {
+  const useFunction = functions().httpsCallable('getProductsByUserId');
+  return new Promise((resolve, reject) => {
+    useFunction({ userId })
+      .then(({ data }) => {
+        resolve(data);
+        dispatch({type: COMMON.GET_ORDERS, userOrders: data });
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
 
 export const login = (userInfo) => (dispatch) => {
   dispatch(LOADING_USER);
@@ -24,6 +39,8 @@ export const login = (userInfo) => (dispatch) => {
       )
         .then(({ user }) => {
           dispatch({ type: COMMON.LOGIN, user: user._user });
+          dispatch(getOrdersByUser(user.uid));
+          dispatch(getMyFavoriteProducts(user.uid));
           dispatch(LOADING_USER_END);
           resolve(user);
         })
@@ -94,20 +111,6 @@ export const autoLogin = () => (dispatch) => {
       dispatch(LOADING_END);
       resolve();
   });
-  });
-};
-
-export const getOrdersByUser = (userId) => (dispatch) => {
-  const useFunction = functions().httpsCallable('getProductsByUserId');
-  return new Promise((resolve, reject) => {
-    useFunction({ userId })
-      .then(({ data }) => {
-        resolve(data);
-        dispatch({type: COMMON.GET_ORDERS, userOrders: data });
-      })
-      .catch((err) => {
-        reject(err);
-      });
   });
 };
 

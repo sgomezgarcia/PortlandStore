@@ -56,9 +56,8 @@ export const filterByGender = (gender) => (dispatch, getState) => new Promise((r
         resolve(filteredProducts);
     });
 
-export const getMyFavoriteProducts = () => (dispatch, getState) => {
-    const { user } = getState().general;
-    const userId = user && user.uid;
+export const getMyFavoriteProducts = (user) => (dispatch, getState) => {
+    const userId = user;
     const useFunction = functions().httpsCallable('getFavoritesByUser');
     dispatch({ type: PRODUCTS.LOADING });
     return new Promise((resolve, reject) => {

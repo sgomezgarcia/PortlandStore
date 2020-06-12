@@ -7,18 +7,20 @@ import LoadingLottie from '../../assets/lotties/loading2.json';
 import styles from './styles';
 
 const FavoriteProduct = ({
-  loading, getMyFavoriteProducts, handleFavoriteProduct, getAllProducts, products, userFavorites
+  user, loading, getMyFavoriteProducts, handleFavoriteProduct, getAllProducts, products, userFavorites
 }) => {
   const [ favs, setFavs ] = useState(null);
   useEffect(() => {
     if (!products) {
       getAllProducts();
     }
-    getMyFavoriteProducts()
-      .then((favProducts) => {
-        const findFavs = products.filter((item) => favProducts.includes(item.id));
-        setFavs(findFavs);
-      });
+    if (user && user.uid) {
+      getMyFavoriteProducts(user.uid)
+        .then((favProducts) => {
+          const findFavs = products.filter((item) => favProducts.includes(item.id));
+          setFavs(findFavs);
+        });
+    }
   }, []);
 
   return (
