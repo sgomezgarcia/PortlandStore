@@ -99,9 +99,9 @@ export const getOrdersByUser = () => (dispatch, getState) => {
   const {user} = getState().general;
   return new Promise((resolve, reject) => {
     useFunction({ userId: user.uid })
-      .then((res) => {
-        resolve(res);
-        dispatch({type: COMMON.GET_ORDERS, userOrders: res});
+      .then(({ data }) => {
+        resolve(data);
+        dispatch({type: COMMON.GET_ORDERS, userOrders: data });
       })
       .catch((err) => {
         reject(err);
