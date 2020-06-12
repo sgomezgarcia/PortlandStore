@@ -19,6 +19,21 @@ const ProductsCard = ({
     }
   }, []);
 
+  const handleFavs = () => {
+    if (!user || !user.uid) {
+      Toast.show('Log in to save products...', Toast.LONG);
+    } else {
+      if (!saved) {
+        favoriteProducts(product.id)
+          .then(() => {
+            setSaved(true);
+          });
+      } else {
+        setSaved(false);
+      }
+    }
+  };
+
   const selectProduct = () => {
     setShowProduct(!showProduct);
   };
@@ -41,20 +56,7 @@ const ProductsCard = ({
                 ios={saved ? 'ios-heart' : 'ios-heart-empty'}
                 android={saved ? 'ios-heart' : 'ios-heart-empty'}
                 style={styles.bookmark}
-                onPress={() => {
-                  if (!user || !user.uid) {
-                    Toast.show('Log in to save products...', Toast.LONG);
-                  } else {
-                    if (!saved) {
-                      favoriteProducts(product.id)
-                        .then(() => {
-                          setSaved(true);
-                        });
-                    } else {
-                      setSaved(false);
-                    }
-                  }
-                }}
+                onPress={handleFavs}
               />
             </Button>
           </View>
@@ -63,12 +65,13 @@ const ProductsCard = ({
       {
         showProduct && (
         <SelectedProduct
+          saved={saved}
           addToCart={addToCart}
           selectProduct={selectProduct}
           scrollRef={scrollRef}
           product={product}
           handleOrderScreen={handleOrderScreen}
-          favoriteProducts={favoriteProducts}
+          handleFavs={handleFavs}
 
         />
       )}
