@@ -18,11 +18,18 @@ import LoadingLottie from '../../assets/lotties/loading2.json';
 
 const Stack = createStackNavigator();
 
-const Main = ({ loading, initApp, getOrdersByUser }) => {
+const Main = ({
+  user,
+  loading,
+  initApp,
+  getOrdersByUser
+}) => {
   useEffect(() => {
     initApp()
     .then(() => {
-      getOrdersByUser();
+      if (user && user.uid) {
+        getOrdersByUser();
+      }
     });
   }, []);
 

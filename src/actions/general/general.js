@@ -10,7 +10,7 @@ export const initApp = () => (dispatch, getState) => Promise.all([
     ])
         .then(() => {
             const {user} = getState().general;
-            if (user.uid) {
+            if (user && user.uid) {
                 dispatch(getMyFavoriteProducts(user.uid));
             }
             dispatch({ type: COMMON.LOADING_END });

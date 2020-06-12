@@ -7,7 +7,8 @@ import { setUser, getOrdersByUser } from '../../actions/users/users';
 import { initApp } from '../../actions/general/general';
 
 const mapStateToProps = ({ general }) => ({
-  loading: general.loading
+  loading: general.loading,
+  user: general.user
 });
 
 const mapDispatchToProps = (dispatch) => ({

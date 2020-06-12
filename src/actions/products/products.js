@@ -58,7 +58,7 @@ export const filterByGender = (gender) => (dispatch, getState) => new Promise((r
 
 export const getMyFavoriteProducts = () => (dispatch, getState) => {
     const { user } = getState().general;
-    const userId = user.uid;
+    const userId = user && user.uid;
     const useFunction = functions().httpsCallable('getFavoritesByUser');
     dispatch({ type: PRODUCTS.LOADING });
     return new Promise((resolve, reject) => {
@@ -81,16 +81,20 @@ export const getMyFavoriteProducts = () => (dispatch, getState) => {
 export const favoriteProducts = (productId) => (dispatch, getState) => new Promise((resolve, reject) => {
     const useFunction = functions().httpsCallable('favoriteProducts');
     const {user} = getState().general;
-    useFunction({
-        favoriteProducts: {
-            userId: user.uid,
-            products: productId
-        }
-    })
-    .then(() => {
-        resolve();
-    })
-    .catch((err) => {
-        reject(err);
-    });
+    if (user && user.uid) {
+        useFunction({
+            favoriteProducts: {
+                userId: user.uid,
+                products: productId
+            }
+        })
+        .then(() => {
+            resolve();
+        })
+        .catch((err) => {
+            reject(err);
+        });
+    } else {
+        reject(new Error('No user'));
+    }
 });

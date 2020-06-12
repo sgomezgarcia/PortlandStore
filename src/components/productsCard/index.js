@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ImageBackground } from 'react-native';
-import { Button, Icon, Toast } from 'native-base';
-
+import { Button, Icon } from 'native-base';
+import Toast from 'react-native-simple-toast';
 
 import styles from './styles';
 import SelectedProduct from '../selectedProduct';
@@ -42,7 +42,7 @@ const ProductsCard = ({
                 android={saved ? 'ios-heart' : 'ios-heart-empty'}
                 style={styles.bookmark}
                 onPress={() => {
-                  if (user && user.uid) {
+                  if (!user || !user.uid) {
                     Toast.show('Log in to save products...', Toast.LONG);
                   } else {
                     if (!saved) {
