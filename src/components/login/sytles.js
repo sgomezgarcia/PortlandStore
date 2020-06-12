@@ -57,6 +57,22 @@ menuLine2: {
     textTransform: 'uppercase',
     fontSize: RFValue(20)
   },
+
+  errorText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 14
+},
+
+errorContainer: {
+    backgroundColor: 'red',
+    padding: RFValue(5),
+    width: DimensionPercentage(50, 'width'),
+    alignItems: 'center',
+    display: 'flex',
+    alignSelf: 'center',
+    marginTop: RFValue(20)
+},
   iconButton: {
       backgroundColor: 'black',
       alignSelf: 'flex-end'

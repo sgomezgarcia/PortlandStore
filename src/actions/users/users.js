@@ -55,6 +55,7 @@ export const signUp = (userInfo) => (dispatch) => new Promise((resolve, reject) 
           }
           console.error(error);
           dispatch(LOADING_USER_END);
+          reject();
           });
       }
 });

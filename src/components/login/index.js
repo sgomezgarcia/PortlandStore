@@ -12,6 +12,7 @@ import Screen from '../base/screen';
 
 const Login = ({ login, navigation, handleSignUp }) => {
   const [ user, setUser ] = useState();
+  const [ error, setError ] = useState(false);
 
   const handleLogin = () => {
     login(user)
@@ -21,6 +22,7 @@ const Login = ({ login, navigation, handleSignUp }) => {
       })
       .catch(() => {
         console.warn('errooooorrrr');
+        setError(true);
       });
   };
 
@@ -58,6 +60,12 @@ const Login = ({ login, navigation, handleSignUp }) => {
               style={styles.input}
             />
           </Item>
+          {
+            error && (
+            <View style={styles.errorContainer}>
+              <Text style={styles.errorText}>Login error. Try again</Text>
+            </View>
+          )}
           <Button
             disabled={!user?.email || !user?.password}
             style={styles.button}

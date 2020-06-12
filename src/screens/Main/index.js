@@ -29,7 +29,7 @@ const Main = ({ loading, initApp, getOrdersByUser }) => {
   if (loading) {
     return (
       <View style={styles.lottie}>
-        <Text>PORTLAND</Text>
+        <Text style={styles.portland}>PORTLAND</Text>
         <Animation
           autoPlay
           loop

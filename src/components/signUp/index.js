@@ -9,6 +9,7 @@ import styles from './styles';
 
 const SignUp = ({ handleBackToLogin, signUp, navigation }) => {
   const [ newUser, setNewUser ] = useState({});
+  const [ error, setError ] = useState(false);
 
   const formValidation = () => {
     if (newUser && newUser.email && newUser.password && newUser.confirmPassword && (newUser.password === newUser.confirmPassword)) {
@@ -16,7 +17,8 @@ const SignUp = ({ handleBackToLogin, signUp, navigation }) => {
       .then(() => {
         Toast.show('User created and signIn', Toast.LONG);
         navigation.navigate('Home');
-      });
+      })
+      .catch(() => setError(true));
     } else {
       if (!newUser.email) {
         console.warn('el puto email');
@@ -75,6 +77,12 @@ const SignUp = ({ handleBackToLogin, signUp, navigation }) => {
             value={newUser?.confirmPassword}
           />
         </Item>
+        {
+            error && (
+            <View style={styles.errorContainer}>
+              <Text style={styles.errorText}>Sign up error. Try again</Text>
+            </View>
+          )}
         <Button style={styles.button} onPress={formValidation}>
           <Text style={styles.text}>sign up</Text>
         </Button>
