@@ -9,7 +9,8 @@ import { addToCart, getAllProducts, favoriteProducts } from '../../actions/produ
 const mapStateToProps = ({ general, product }) => ({
   loading: product.loading,
   products: product.filteredProducts,
-  userFavorites: general.userFavorites
+  userFavorites: general.userFavorites,
+  user: general.user
 });
 
 // pass actions to component

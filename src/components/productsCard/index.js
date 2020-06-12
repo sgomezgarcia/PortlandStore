@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ImageBackground } from 'react-native';
-import { Button, Icon } from 'native-base';
+import { Button, Icon, Toast } from 'native-base';
+
+
 import styles from './styles';
 import SelectedProduct from '../selectedProduct';
 
 
 const ProductsCard = ({
-  addToCart, product, scrollRef, favoriteProducts, favorite
+  user, addToCart, product, scrollRef, favoriteProducts, favorite
  }) => {
   const [ showProduct, setShowProduct ] = useState(false);
   const [ saved, setSaved ] = useState(false);
@@ -40,13 +42,17 @@ const ProductsCard = ({
                 android={saved ? 'ios-heart' : 'ios-heart-empty'}
                 style={styles.bookmark}
                 onPress={() => {
-                  if (!saved) {
-                    favoriteProducts(product.id)
-                      .then(() => {
-                        setSaved(true);
-                      });
+                  if (user && user.uid) {
+                    Toast.show('Log in to save products...', Toast.LONG);
                   } else {
-                    setSaved(false);
+                    if (!saved) {
+                      favoriteProducts(product.id)
+                        .then(() => {
+                          setSaved(true);
+                        });
+                    } else {
+                      setSaved(false);
+                    }
                   }
                 }}
               />
