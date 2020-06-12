@@ -89,9 +89,10 @@ export const autoLogin = () => (dispatch) => {
     auth().onAuthStateChanged((loggedUser) => {
       if (loggedUser) {
         dispatch({ type: COMMON.LOGIN, user: loggedUser._user });
+        resolve(loggedUser._user);
       }
       dispatch(LOADING_END);
-      resolve(loggedUser._user);
+      resolve();
   });
   });
 };
