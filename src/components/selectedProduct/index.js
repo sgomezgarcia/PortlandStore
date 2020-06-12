@@ -5,7 +5,12 @@ import Toast from 'react-native-simple-toast';
 import styles from './styles';
 
 const SelectedProduct = ({
- addToCart, product, handleOrderScreen, handleFavoriteProduct, scrollRef, favoriteProducts
+ saved,
+ addToCart,
+ product,
+ handleOrderScreen,
+ scrollRef,
+ handleFavs
 }) => {
   useEffect(() => {
     scrollRef.current.scrollTo({x: 0, y: 0});
@@ -22,8 +27,8 @@ const SelectedProduct = ({
   return (
     <View style={styles.menu}>
       <View style={styles.menuLine2}>
-        <Button style={styles.button2} title="hola" onPress={() => favoriteProducts(product.id)}>
-          <Icon ios="ios-heart-empty" android="ios-heart-empty" style={styles.bookmark} onPress={() => handleFavoriteProduct()} />
+        <Button style={styles.button2} title="hola" onPress={handleFavs}>
+          <Icon ios={saved ? 'ios-heart' : 'ios-heart-empty'} android={saved ? 'ios-heart' : 'ios-heart-empty'} style={styles.bookmark} onPress={handleFavs} />
         </Button>
         <Button style={styles.iconButton} onPress={handleOrderScreen} title="">
           <Icon
