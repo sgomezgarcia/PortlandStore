@@ -6,7 +6,7 @@ import styles from './styles';
 import ProductsCard from '../../components/productsCard';
 
 const ProductsScreen = ({
-  navigation, products, getAllProducts, addToCart, favoriteProducts, userFavorites
+  user, navigation, products, getAllProducts, addToCart, favoriteProducts, userFavorites
 }) => {
   useEffect(() => {
     if (!products) {
@@ -23,6 +23,7 @@ const ProductsScreen = ({
           {
             products && products.map((product, key) => (
               <ProductsCard
+                user={user}
                 favorite={userFavorites.includes(product.id)}
                 addToCart={addToCart}
                 key={key}
