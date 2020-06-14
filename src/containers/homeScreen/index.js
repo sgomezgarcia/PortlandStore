@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 
 import HomeScreen from '../../screens/HomeScreen';
 
-import { filterByGender } from '../../actions/products/products';
+import { filterByGender, filterByNewIn } from '../../actions/products/products';
 
 
 const mapStateToProps = ({ general }) => ({
@@ -13,7 +13,8 @@ const mapStateToProps = ({ general }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   ...bindActionCreators({
-    filterByGender
+    filterByGender,
+    filterByNewIn
   }, dispatch)
 });
 

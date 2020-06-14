@@ -9,20 +9,33 @@ import Screen from '../../components/base/screen';
 
 import styles from './styles';
 
-const HomeScreen = ({ navigation, user, filterByGender }) => {
+const HomeScreen = ({
+  navigation,
+  user,
+  filterByGender,
+  filterByNewIn
+}) => {
   const viewButton = (gender) => {
     filterByGender(gender)
       .then(() => {
         navigation.navigate('Products');
       });
   };
+
+  const newInButton = () => {
+    filterByNewIn()
+      .then(() => {
+        navigation.navigate('Products');
+      });
+  };
+
   return (
     <Screen header footer user={user} navigation={navigation}>
       <ScrollView>
         <View style={styles.homeScreenContainer}>
           <ImageBackground style={styles.image} source={background2}>
             <Text style={styles.imageText}>new in</Text>
-            <Button transparent bordered dark style={styles.buttonSubtitle} onPress={() => viewButton(null)}>
+            <Button transparent bordered dark style={styles.buttonSubtitle} onPress={newInButton}>
               <Text style={styles.textSubtitle}>view</Text>
             </Button>
           </ImageBackground>

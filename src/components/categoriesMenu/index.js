@@ -12,10 +12,24 @@ const CategoriesMenu = ({
   filterByCategory,
   handleMenu,
   navigation,
-  setMenuOpen
+  setMenuOpen,
+  filterByNewIn
 }) => {
   const filterProducts = (category) => {
     filterByCategory(category)
+      .then(() => {
+        // navigate to products
+        navigation.navigate('Products');
+        setMenuOpen(false);
+      })
+      .catch(() => {
+        // mostrar toast error
+        Toast.show('Error loading products...', Toast.LONG);
+      });
+  };
+
+  const filterNewInProducts = (gender) => {
+    filterByNewIn(gender)
       .then(() => {
         // navigate to products
         navigation.navigate('Products');
@@ -40,7 +54,7 @@ const CategoriesMenu = ({
       </View>
 
       <View style={styles.menuLine}>
-        <Button style={styles.button}>
+        <Button style={styles.button} onPress={() => filterNewInProducts('W' === categoriesGender ? 'woman' : 'man')}>
           <Text style={styles.textNewIn}>new in</Text>
         </Button>
       </View>

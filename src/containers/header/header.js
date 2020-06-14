@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import header from '../../components/header';
-import { filterByCategory } from '../../actions/products/products';
+import { filterByCategory, filterByNewIn } from '../../actions/products/products';
 
 const mapStateToProps = ({ general }) => ({
   categories: general.categories,
@@ -10,7 +10,8 @@ const mapStateToProps = ({ general }) => ({
 
 const mapDispatchToProps = (dispatch) => ({ // acciones
   ...bindActionCreators({
-    filterByCategory
+    filterByCategory,
+    filterByNewIn
   }, dispatch)
 });
 

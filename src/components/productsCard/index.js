@@ -21,9 +21,8 @@ const ProductsCard = ({
 
   const handleFavs = () => {
     if (!user || !user.uid) {
-      Toast.show('Log in to save products...', Toast.LONG);
-    } else {
-      if (!saved) {
+      Toast.show('Log in to save products', Toast.LONG);
+    } else if (!saved) {
         favoriteProducts(product.id)
           .then(() => {
             setSaved(true);
@@ -31,7 +30,6 @@ const ProductsCard = ({
       } else {
         setSaved(false);
       }
-    }
   };
 
   const selectProduct = () => {

@@ -15,7 +15,7 @@ const SignUp = ({ handleBackToLogin, signUp, navigation }) => {
     if (newUser && newUser.email && newUser.password && newUser.confirmPassword && (newUser.password === newUser.confirmPassword)) {
       signUp(newUser)
       .then(() => {
-        Toast.show('User created and signIn', Toast.LONG);
+        Toast.show('User created and signed in', Toast.LONG);
         navigation.navigate('Home');
       })
       .catch(() => setError(true));

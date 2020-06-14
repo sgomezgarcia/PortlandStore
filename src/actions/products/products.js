@@ -45,6 +45,16 @@ export const filterByCategory = (category) => (dispatch, getState) => new Promis
         }
     });
 
+export const filterByNewIn = (gender) => (dispatch, getState) => new Promise((resolve, reject) => {
+    const { products } = getState().product;
+    let filteredProducts = products.filter((newProduct) => true === newProduct.new);
+    if (gender) {
+        filteredProducts = filteredProducts.filter((item) => item.gender === gender);
+    }
+    dispatch({ type: PRODUCTS.GET_FILTERED, products: filteredProducts });
+    resolve(filteredProducts);
+});
+
 export const filterByGender = (gender) => (dispatch, getState) => new Promise((resolve) => {
         const { products } = getState().product;
         let filteredProducts = [ ...products ];
