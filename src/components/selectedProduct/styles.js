@@ -129,6 +129,8 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.white,
         maxHeight: DimensionPercentage(50, 'height'),
         width: DimensionPercentage(100, 'width'),
+        borderTopWidth: RFValue(1),
+        borderTopColor: 'grey'
     }
 });
 

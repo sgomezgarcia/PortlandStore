@@ -38,7 +38,7 @@ const OrderPayment = ({ errorCard, paymentForm, setPaymentForm }) => (
       </Item>
       <Item style={styles.items}>
         <Input
-          placeholder="Holder"
+          placeholder="Name and surname"
           style={styles.creditCard}
           onChange={(e) => {
             setPaymentForm({ ...paymentForm, holder: e.nativeEvent.text });
