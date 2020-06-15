@@ -1,21 +1,20 @@
 import { StyleSheet } from 'react-native';
 import { DimensionPercentage } from '../../utils/helpers';
-
+import { COLORS } from '../../utils/constants';
 
 const styles = StyleSheet.create({
    lottie: {
-       height: DimensionPercentage(100, 'height'),
-       backgroundColor: 'black',
+       height: DimensionPercentage(10, 'height'),
+       backgroundColor: COLORS.white,
        display: 'flex',
-       alignItems: 'center'
-   },
+       alignSelf: 'center',
+       marginTop: DimensionPercentage(10, 'height')
+    },
    portland: {
-       color: 'white',
-        alignSelf: 'center',
-        marginTop: DimensionPercentage(37, 'height'),
-        fontSize: 35,
-        fontWeight: 'bold',
-        fontFamily: 'Futura',
+       height: DimensionPercentage(10, 'height'),
+       width: DimensionPercentage(80, 'width'),
+       alignSelf: 'center',
+       marginTop: DimensionPercentage(27, 'height')
     }
 });
 

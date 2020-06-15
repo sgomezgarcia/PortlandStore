@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Animation from 'lottie-react-native';
-import { View, Text } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -14,7 +14,8 @@ import HomeScreen from '../../containers/homeScreen';
 import MyOrdersScreen from '../../containers/myOrders';
 import ProductsScreen from '../../containers/productsScreen';
 import UserProfileScreen from '../../containers/userProfile';
-import LoadingLottie from '../../assets/lotties/loading2.json';
+import LoadingLottie from '../../assets/lotties/loading3.json';
+import logoP from '../../assets/images/logoP.png';
 
 const Stack = createStackNavigator();
 
@@ -28,12 +29,13 @@ const Main = ({
 
   if (loading) {
     return (
-      <View style={styles.lottie}>
-        <Text style={styles.portland}>PORTLAND</Text>
+      <View>
+        <ImageBackground style={styles.portland} source={logoP} />
         <Animation
           autoPlay
           loop
           source={LoadingLottie}
+          style={styles.lottie}
         />
       </View>
     );

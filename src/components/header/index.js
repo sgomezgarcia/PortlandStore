@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ImageBackground } from 'react-native';
 import { Button } from 'native-base';
+import logoP from '../../assets/images/logoP.png';
 import styles from './styles';
 import CategoriesMenu from '../categoriesMenu';
 
@@ -15,11 +16,11 @@ const Header = ({ navigation, categories, filterByCategory }) => {
 
   return (
     <View style={styles.homeScreenContainer}>
+      <Button bordered dark style={styles.homeScreenButtonLogo} onPress={() => navigation.navigate('Home')}>
+        <ImageBackground style={styles.portland} source={logoP} />
+      </Button>
       <Button bordered dark style={styles.homeScreenButton} onPress={() => handleMenu('W')}>
         <Text style={styles.buttonText}>Woman</Text>
-      </Button>
-      <Button bordered dark style={styles.homeScreenButton} onPress={() => navigation.navigate('Home')}>
-        <Text style={styles.buttonText}>Home</Text>
       </Button>
       <Button bordered dark style={styles.homeScreenButton} onPress={() => handleMenu('M')}>
         <Text style={styles.buttonText}>Man</Text>
