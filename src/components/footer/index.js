@@ -61,7 +61,7 @@ const MyFooter = ({
 
           </Button>
           <Button style={styles.footerButton}>
-            <Icon ios="ios-home" android="ios-home" style={styles.footerIconHome} onPress={() => navigation.navigate('Home')} />
+            <Icon ios="ios-home" android="ios-home" style={styles.footerIcon} onPress={() => navigation.navigate('Home')} />
           </Button>
           <Button onPress={userLink} style={styles.footerButton}>
             <Icon ios="ios-person" android="ios-person" style={styles.footerIcon} />

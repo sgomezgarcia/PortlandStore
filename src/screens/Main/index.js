@@ -29,7 +29,7 @@ const Main = ({
 
   if (loading) {
     return (
-      <View>
+      <View style={styles.loadingScreen}>
         <ImageBackground style={styles.portland} source={logoP} />
         <Animation
           autoPlay

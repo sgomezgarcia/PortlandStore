@@ -20,10 +20,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: COLORS.black,
     },
-    footerIconHome: {
-        fontSize: 30,
-        color: COLORS.black,
-    },
 
     footer: {
         backgroundColor: 'white',
