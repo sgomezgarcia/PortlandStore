@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 
     portland: {
         height: DimensionPercentage(3, 'height'),
-        width: DimensionPercentage(21, 'width'),
+        width: DimensionPercentage(24, 'width'),
         display: 'flex',
     },
 
