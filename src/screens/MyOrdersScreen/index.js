@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
-
-
 import { View, Text, Image } from 'react-native';
-
+import Animation from 'lottie-react-native';
+import LoadingLottie from '../../assets/lotties/loading3.json';
 import Screen from '../../components/base/screen';
 
 import styles from './styles';
@@ -36,10 +35,16 @@ const MyOrdersScreen = ({
     <Screen header footer navigation={navigation}>
       <ScrollView>
         {
-          loading ?
-            <Text>LOADING</Text> : (
-              <View style={styles.ordersScreen}>
-                {
+          loading ? (
+            <Animation
+              autoPlay
+              loop
+              source={LoadingLottie}
+              style={styles.lottie}
+            />
+        ) : (
+          <View style={styles.ordersScreen}>
+            {
                 userOrders && userOrders.data && userOrders.data && 0 < userOrders.data.length &&
                   userOrders.data.map((order, key) => (
                     <View key={key} style={styles.orderLine}>
@@ -58,7 +63,7 @@ const MyOrdersScreen = ({
                     </View>
                   ))
               }
-              </View>
+          </View>
           )}
       </ScrollView>
     </Screen>

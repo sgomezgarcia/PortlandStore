@@ -21,16 +21,16 @@ const SignUp = ({ handleBackToLogin, signUp, navigation }) => {
       .catch(() => setError(true));
     } else {
       if (!newUser.email) {
-        console.warn('el puto email');
+        Toast.show('Missing email', Toast.LONG);
       }
       if (!newUser.password) {
-        console.warn('la pass bro');
+        Toast.show('Missing password', Toast.LONG);
       }
-      if (!newUser.confirmPassword) {
-        console.warn('otra vez');
+      if (6 > newUser.password.length) {
+        Toast.show('6 characters minimum', Toast.LONG);
       }
       if (newUser.password !== newUser.confirmPassword) {
-        console.warn('no iguales');
+        Toast.show('Passwords do not match', Toast.LONG);
       }
     }
   };
@@ -61,7 +61,7 @@ const SignUp = ({ handleBackToLogin, signUp, navigation }) => {
         </Item>
         <Item>
           <Input
-            placeholder="Password"
+            placeholder="Password (6 characters minimum)"
             secureTextEntry
             style={styles.input}
             onChange={(e) => setNewUser({ ...newUser, password: e.nativeEvent.text })}

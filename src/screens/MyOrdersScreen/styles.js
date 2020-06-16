@@ -27,7 +27,14 @@ const styles = StyleSheet.create({
     height: DimensionPercentage(20, 'height'),
     width: DimensionPercentage(20, 'width'),
     alignSelf: 'center'
-},
+  },
+  lottie: {
+    height: DimensionPercentage(5, 'height'),
+    backgroundColor: COLORS.white,
+    display: 'flex',
+    alignSelf: 'center',
+    marginTop: DimensionPercentage(6, 'height')
+ }
 });
 
 export default styles;
