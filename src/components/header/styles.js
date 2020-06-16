@@ -25,9 +25,9 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.white,
         borderColor: COLORS.white,
         display: 'flex',
-        justifyContent: 'center',
-        width: DimensionPercentage(18, 'width'),
+        justifyContent: 'flex-end',
         height: DimensionPercentage(6, 'height'),
+        width: 'auto',
         padding: RFValue(7),
 
     },
@@ -35,10 +35,9 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.white,
         borderColor: COLORS.white,
         display: 'flex',
-        flex: 1,
+        flex: 2,
         justifyContent: 'flex-start',
         paddingStart: RFValue(8),
-        width: DimensionPercentage(16, 'width'),
 
     },
 
